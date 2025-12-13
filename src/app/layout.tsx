@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
     images: [
       {
-        url: '/images/og-image.png',
+        url: 'https://leandrotrabucco.me/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Leandro Trabucco - Full Stack Developer',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Leandro Trabucco | Full Stack Developer',
     description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
-    images: ['/images/og-image.png'],
+    images: ['https://leandrotrabucco.me/images/og-image.png'],
   },
   robots: {
     index: true,
@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
