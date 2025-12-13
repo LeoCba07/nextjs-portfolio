@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 export default function Navbar() {
-  const links = ['About', 'Projects', 'Experience', 'Contact']
+  const links = ['About', 'Projects', 'Contact']
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
