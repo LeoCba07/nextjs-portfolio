@@ -1,9 +1,18 @@
+'use client'
 import { Mail, Github, Linkedin } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function Contact() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
-    <section id="contact" className="min-h-screen flex items-center px-4 md:px-8 relative z-10">
-      <div className="max-w-4xl mx-auto text-center w-full">
+    <section id="contact" className="min-h-[80vh] flex items-center px-4 md:px-8 relative z-10">
+      <div
+        ref={ref}
+        className={`max-w-4xl mx-auto text-center w-full transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+        }`}
+      >
         {/* Badge */}
         <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-6">
           <span>✦</span> Let's Connect
@@ -39,7 +48,8 @@ export default function Contact() {
               <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-5 h-3 rounded-sm object-cover" />
             </a>
 
-            <a            href="/Leandro_Trabucco_Rirekisho.pdf"
+            <a
+              href="/Leandro_Trabucco_Rirekisho.pdf"
               download
               className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >

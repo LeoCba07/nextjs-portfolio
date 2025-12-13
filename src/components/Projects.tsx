@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 function PhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
@@ -76,28 +77,35 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
 }
 
 function PhoneDeck({ images, alt }: { images: string[]; alt: string }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const getStyles = (index: number) => {
+    const collapsed = [
+      "-translate-x-12 sm:-translate-x-18 md:-translate-x-20 -rotate-6 translate-y-2",
+      "translate-x-0 z-10 -translate-y-2",
+      "translate-x-12 sm:translate-x-18 md:translate-x-20 rotate-6 translate-y-2"
+    ]
+    const expanded = [
+      "-translate-x-28 sm:-translate-x-32 md:-translate-x-40 -rotate-6 translate-y-2",
+      "translate-x-0 z-10 -translate-y-2",
+      "translate-x-28 sm:translate-x-32 md:translate-x-40 rotate-6 translate-y-2"
+    ]
+    return isExpanded ? expanded[index] : collapsed[index]
+  }
+
   return (
-    <div className="group relative h-[320px] md:h-[420px] w-full flex justify-center items-center">
-      {images.map((img, i) => {
-        const baseStyles = [
-          "-translate-x-12 sm:-translate-x-18 md:-translate-x-20 -rotate-6 translate-y-2",
-          "translate-x-0 z-10 -translate-y-2",
-          "translate-x-12 sm:translate-x-18 md:translate-x-20 rotate-6 translate-y-2"
-        ]
-        const hoverStyles = [
-          "group-hover:-translate-x-24 group-hover:sm:-translate-x-26 group-hover:md:-translate-x-34",
-          "",
-          "group-hover:translate-x-24 group-hover:sm:translate-x-26 group-hover:md:translate-x-34"
-        ]
-        return (
-          <div
-            key={i}
-            className={`absolute ${baseStyles[i]} ${hoverStyles[i]} transition-all duration-300 ease-out`}
-          >
-            <PhoneFrame src={img} alt={`${alt} ${i + 1}`} />
-          </div>
-        )
-      })}
+    <div
+      className="relative h-[320px] md:h-[420px] w-full flex justify-center items-center cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      {images.map((img, i) => (
+        <div
+          key={i}
+          className={`absolute transition-all duration-300 ease-out ${getStyles(i)}`}
+        >
+          <PhoneFrame src={img} alt={`${alt} ${i + 1}`} />
+        </div>
+      ))}
     </div>
   )
 }
@@ -111,6 +119,69 @@ function TechIcon({ name, icon }: { name: string; icon: string }) {
         className="w-4 h-4"
       />
       <span className="text-xs text-gray-400">{name}</span>
+    </div>
+  )
+}
+
+function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+  const { ref, isVisible } = useScrollAnimation()
+
+  return (
+    <div
+      ref={ref}
+      className={`bg-white/[0.02] p-6 md:p-10 rounded-2xl border border-white/10 hover:border-[#d4af37]/30 transition-all duration-1000 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+      }`}
+    >
+      <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
+        {/* Images */}
+        {project.images.length > 0 && (
+          <div className="lg:w-1/2">
+            {project.type === "mobile" ? (
+              <PhoneDeck images={project.images} alt={project.title} />
+            ) : (
+              <BrowserCarousel images={project.images} alt={project.title} />
+            )}
+          </div>
+        )}
+
+        {/* Content */}
+        <div className={`flex-1 flex flex-col justify-center ${project.images.length === 0 ? 'lg:max-w-3xl' : ''}`}>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{project.title}</h3>
+          <p className="text-gray-400 text-lg leading-relaxed mb-6">{project.description}</p>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.stack.map((tech) => (
+              <TechIcon key={tech.name} name={tech.name} icon={tech.icon} />
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
+              >
+                <Github className="w-4 h-4" />
+                Code
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -190,73 +261,28 @@ const projects = [
 ]
 
 export default function Projects() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="projects" className="py-24 px-4 md:px-8 relative z-10">
       <div className="max-w-6xl mx-auto">
+        {/* Header animates in */}
+        <div
+          ref={ref}
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+          }`}
+        >
+          <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
+            <span>✦</span> My Work
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">Projects</h2>
+        </div>
 
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
-          <span>✦</span> My Work
-        </span>
-
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">Projects</h2>
-
+        {/* Each project card animates individually */}
         <div className="space-y-16">
           {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="bg-white/[0.02] p-6 md:p-10 rounded-2xl border border-white/10 hover:border-[#d4af37]/30 transition-all duration-300"
-            >
-              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
-                {/* Images */}
-                {project.images.length > 0 && (
-                  <div className="lg:w-1/2">
-                    {project.type === "mobile" ? (
-                      <PhoneDeck images={project.images} alt={project.title} />
-                    ) : (
-                      <BrowserCarousel images={project.images} alt={project.title} />
-                    )}
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className={`flex-1 flex flex-col justify-center ${project.images.length === 0 ? 'lg:max-w-3xl' : ''}`}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{project.title}</h3>
-                  <p className="text-gray-400 text-lg leading-relaxed mb-6">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.stack.map((tech) => (
-                      <TechIcon key={tech.name} name={tech.name} icon={tech.icon} />
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-4">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
-                      >
-                        <Github className="w-4 h-4" />
-                        Code
-                      </a>
-                    )}
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>
