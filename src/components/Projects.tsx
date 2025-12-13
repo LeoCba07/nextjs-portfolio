@@ -5,7 +5,7 @@ import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 function PhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`relative w-[100px] sm:w-[130px] md:w-[160px] flex-shrink-0 ${className}`}>
-      <div className="bg-gray-900 rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl">
+      <div className="bg-gray-800 rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl border border-gray-700">
         <div className="rounded-[1rem] md:rounded-[1.25rem] overflow-hidden bg-black">
           <img src={src} alt={alt} className="w-full" />
         </div>
@@ -42,21 +42,42 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
 
   return (
     <div className="relative">
-      <BrowserFrame src={images[current]} alt={alt} />
+      <div className="w-full">
+        <div className="bg-gray-800 rounded-t-lg px-4 py-2 flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+          <div className="flex-1 bg-gray-700 rounded text-xs text-gray-400 px-3 py-1 ml-2 truncate">
+            {alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
+          </div>
+        </div>
+        <div className="relative border border-t-0 border-gray-700 rounded-b-lg overflow-hidden shadow-2xl bg-gray-900 aspect-video">
+          {images.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`${alt} ${i + 1}`}
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ))}
+        </div>
+      </div>
 
       {images.length > 1 && (
         <>
           <button
             onClick={prev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition"
+            className="group absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
           >
-            <ChevronLeft className="w-5 h-5 text-gray-800" />
+            <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
           <button
             onClick={next}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition"
+            className="group absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
           >
-            <ChevronRight className="w-5 h-5 text-gray-800" />
+            <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
 
           <div className="flex justify-center gap-2 mt-4">
@@ -64,7 +85,7 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-[#1e3a5f]' : 'bg-gray-300'}`}
+                className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-white' : 'bg-gray-600'}`}
               />
             ))}
           </div>
@@ -103,13 +124,13 @@ function PhoneDeck({ images, alt }: { images: string[]; alt: string }) {
 
 function TechIcon({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full">
+    <div className="flex items-center gap-2 bg-white/5 px-2.5 py-1 rounded-md">
       <img
         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}.svg`}
         alt={name}
-        className="w-4 h-4"
+        className="w-6 h-6"
       />
-      <span className="text-sm text-gray-700">{name}</span>
+      <span className="text-xs text-gray-400">{name}</span>
     </div>
   )
 }
@@ -137,13 +158,13 @@ const projects = [
   },
   {
     title: "Adventure Maker",
-    description: "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment system analyzing user decision patterns. Solved challenge of maintaining narrative consistency despite free-form user input.",
+    description: "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns. Solved challenge of maintaining narrative consistency despite free-form user input.",
     stack: [
       { name: "Rails", icon: "rails/rails-plain" },
+      { name: "Gemini API", icon: "google/google-original" },
       { name: "SCSS", icon: "sass/sass-original" },
       { name: "Bootstrap", icon: "bootstrap/bootstrap-original" },
       { name: "PostgreSQL", icon: "postgresql/postgresql-original" },
-      { name: "Gemini API", icon: "google/google-original" },
     ],
     github: "https://github.com/ShinOWfu/AdventureMaker",
     live: null,
@@ -190,15 +211,15 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 md:px-8 bg-gray-50">
+    <section id="projects" className="py-24 px-4 md:px-8 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#1e3a5f] mb-12">Projects</h2>
+        <h2 className="text-3xl font-bold text-white mb-12">Projects</h2>
 
         <div className="space-y-16">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300"
+              className="bg-[#111] p-6 md:p-10 rounded-2xl border border-gray-800 hover:border-gray-700 transition-all duration-300"
             >
               <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
                 {/* Images */}
@@ -214,8 +235,8 @@ export default function Projects() {
 
                 {/* Content */}
                 <div className={`flex-1 flex flex-col justify-center ${project.images.length === 0 ? 'lg:max-w-3xl' : ''}`}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#1e3a5f] mb-4">{project.title}</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-6">{project.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{project.title}</h3>
+                  <p className="text-gray-400 text-lg leading-relaxed mb-6">{project.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.stack.map((tech) => (
@@ -229,10 +250,10 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#1e3a5f] text-white px-5 py-2.5 rounded-full hover:bg-[#2d4a6f] transition"
+                        className="inline-flex items-center gap-2 border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
                       >
-                        <Github className="w-5 h-5" />
-                        GitHub
+                        <Github className="w-4 h-4" />
+                        Code
                       </a>
                     )}
                     {project.live && (
@@ -240,10 +261,10 @@ export default function Projects() {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#b8860b] text-white px-5 py-2.5 rounded-full hover:bg-[#9a7209] transition"
+                        className="inline-flex items-center gap-2 bg-[#b8860b]/20 hover:bg-[#b8860b]/30 text-[#d4a00a] px-4 py-2 rounded-lg transition"
                       >
-                        <ExternalLink className="w-5 h-5" />
-                        Live Demo
+                        <ExternalLink className="w-4 h-4" />
+                        <span className="text-sm">Live Demo</span>
                       </a>
                     )}
                   </div>
