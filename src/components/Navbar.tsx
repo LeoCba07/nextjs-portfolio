@@ -7,39 +7,50 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = links.map(link => document.getElementById(link.toLowerCase()))
-      const scrollPosition = window.scrollY + 100
+      const scrollTop = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
 
-      sections.forEach((section, index) => {
+      // At top - no active section
+      if (scrollTop < 100) {
+        setActiveSection('')
+        return
+      }
+
+      // Near bottom - Contact is active
+      if (scrollTop + windowHeight >= documentHeight - 300) {
+        setActiveSection('contact')
+        return
+      }
+
+      // Check sections from bottom to top
+      for (let i = links.length - 1; i >= 0; i--) {
+        const section = document.getElementById(links[i].toLowerCase())
         if (section) {
-          const sectionTop = section.offsetTop
-          const sectionHeight = section.offsetHeight
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            setActiveSection(links[index].toLowerCase())
+          const rect = section.getBoundingClientRect()
+          if (rect.top <= 150) {
+            setActiveSection(links[i].toLowerCase())
+            return
           }
         }
-      })
-
-      // If at top, no active section
-      if (window.scrollY < 100) {
-        setActiveSection('')
       }
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-[#0a0a0a]/80 backdrop-blur-md z-50 border-b border-white/5">
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold text-white hover:text-[#b8860b] transition">
-          LT<span className="animate-blink text-[#b8860b]">_</span>
+        <a href="#" className="text-xl font-bold text-white hover:text-[#d4af37] transition">
+          LT<span className="animate-blink text-[#d4af37]">_</span>
         </a>
 
         <div className="flex gap-8">
           {links.map((link) => (
-            <a
+              <a
               key={link}
               href={`#${link.toLowerCase()}`}
               className={`relative text-sm transition-colors duration-300 ${
@@ -50,7 +61,7 @@ export default function Navbar() {
             >
               {link}
               {activeSection === link.toLowerCase() && (
-                <span className="absolute -bottom-1 left-0 right-0 h-px bg-[#b8860b]" />
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-[#d4af37]" />
               )}
             </a>
           ))}

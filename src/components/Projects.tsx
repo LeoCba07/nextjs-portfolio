@@ -5,30 +5,10 @@ import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 function PhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`relative w-[100px] sm:w-[130px] md:w-[160px] flex-shrink-0 ${className}`}>
-      <div className="bg-gray-800 rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl border border-gray-700">
+      <div className="bg-[#1a1a1a] rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl border border-white/10">
         <div className="rounded-[1rem] md:rounded-[1.25rem] overflow-hidden bg-black">
           <img src={src} alt={alt} className="w-full" />
         </div>
-      </div>
-    </div>
-  )
-}
-
-function BrowserFrame({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="w-full">
-      <div className="bg-gray-800 rounded-t-lg px-4 py-2 flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-        </div>
-        <div className="flex-1 bg-gray-700 rounded text-xs text-gray-400 px-3 py-1 ml-2 truncate">
-          {alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
-        </div>
-      </div>
-      <div className="border border-t-0 border-gray-700 rounded-b-lg overflow-hidden shadow-2xl">
-        <img src={src} alt={alt} className="w-full aspect-video object-contain bg-gray-900" />
       </div>
     </div>
   )
@@ -43,17 +23,17 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
   return (
     <div className="relative">
       <div className="w-full">
-        <div className="bg-gray-800 rounded-t-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-white/5 rounded-t-lg px-4 py-2 flex items-center gap-2 border border-white/10 border-b-0">
           <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500" />
-            <div className="w-3 h-3 rounded-full bg-green-500" />
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
-          <div className="flex-1 bg-gray-700 rounded text-xs text-gray-400 px-3 py-1 ml-2 truncate">
+          <div className="flex-1 bg-white/5 rounded text-xs text-gray-500 px-3 py-1 ml-2 truncate font-mono">
             {alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
           </div>
         </div>
-        <div className="relative border border-t-0 border-gray-700 rounded-b-lg overflow-hidden shadow-2xl bg-gray-900 aspect-video">
+        <div className="relative border border-white/10 border-t-0 rounded-b-lg overflow-hidden shadow-2xl bg-[#0d0d0d] aspect-video">
           {images.map((img, i) => (
             <img
               key={i}
@@ -85,7 +65,7 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-white' : 'bg-gray-600'}`}
+                className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-[#d4af37]' : 'bg-white/20'}`}
               />
             ))}
           </div>
@@ -124,11 +104,11 @@ function PhoneDeck({ images, alt }: { images: string[]; alt: string }) {
 
 function TechIcon({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="flex items-center gap-2 bg-white/5 px-2.5 py-1 rounded-md">
+    <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
       <img
         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}.svg`}
         alt={name}
-        className="w-6 h-6"
+        className="w-4 h-4"
       />
       <span className="text-xs text-gray-400">{name}</span>
     </div>
@@ -138,7 +118,7 @@ function TechIcon({ name, icon }: { name: string; icon: string }) {
 const projects = [
   {
     title: "Nihongo Hero",
-    description: "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development of the final Le Wagon project in two weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA.",
+    description: "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA.",
     stack: [
       { name: "Rails", icon: "rails/rails-plain" },
       { name: "JavaScript", icon: "javascript/javascript-original" },
@@ -158,7 +138,7 @@ const projects = [
   },
   {
     title: "Adventure Maker",
-    description: "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns. Solved challenge of maintaining narrative consistency despite free-form user input.",
+    description: "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns.",
     stack: [
       { name: "Rails", icon: "rails/rails-plain" },
       { name: "Gemini API", icon: "google/google-original" },
@@ -193,7 +173,7 @@ const projects = [
   },
   {
     title: "Watch List",
-    description: "A movie watchlist application to create custom lists, add movies, and write reviews. Built during Le Wagon bootcamp to practice Rails fundamentals, MVC architecture and Active Record associations.",
+    description: "A movie watchlist application to create custom lists, add movies, and write reviews. Built to practice Rails fundamentals, MVC architecture and Active Record associations.",
     stack: [
       { name: "Rails", icon: "rails/rails-plain" },
       { name: "PostgreSQL", icon: "postgresql/postgresql-original" },
@@ -211,15 +191,21 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 md:px-8 bg-[#0a0a0a]">
+    <section id="projects" className="py-24 px-4 md:px-8 relative z-10">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-12">Projects</h2>
+
+        {/* Badge */}
+        <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
+          <span>✦</span> My Work
+        </span>
+
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">Projects</h2>
 
         <div className="space-y-16">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-[#111] p-6 md:p-10 rounded-2xl border border-gray-800 hover:border-gray-700 transition-all duration-300"
+              className="bg-white/[0.02] p-6 md:p-10 rounded-2xl border border-white/10 hover:border-[#d4af37]/30 transition-all duration-300"
             >
               <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
                 {/* Images */}
@@ -250,7 +236,7 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
+                        className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
                       >
                         <Github className="w-4 h-4" />
                         Code
@@ -261,10 +247,10 @@ export default function Projects() {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#b8860b]/20 hover:bg-[#b8860b]/30 text-[#d4a00a] px-4 py-2 rounded-lg transition"
+                        className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">Live Demo</span>
+                        Live Demo
                       </a>
                     )}
                   </div>
