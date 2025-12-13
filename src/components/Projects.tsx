@@ -9,7 +9,7 @@ const projects = [
   {
     title: "AdventureMaker",
     description: "AI-powered interactive storytelling with psychological assessment based on your choices.",
-    stack: ["Rails 7", "PostgreSQL", "Claude API", "Gemini API"],
+    stack: ["Rails 7", "PostgreSQL", "Gemini API"],
     github: "https://github.com/ShinOWfu/AdventureMaker",
     live: null,
   },
