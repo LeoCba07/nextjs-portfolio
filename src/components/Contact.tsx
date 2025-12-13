@@ -15,7 +15,7 @@ export default function Contact() {
       >
         {/* Badge */}
         <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-6">
-          <span>✦</span> Let's Connect
+          <span>✦</span> Connect with me
         </span>
 
         <h2 className="text-5xl md:text-6xl font-bold text-white mb-3">
