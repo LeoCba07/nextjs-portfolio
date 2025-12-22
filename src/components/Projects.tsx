@@ -188,6 +188,27 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 const projects = [
   {
+    title: "Cabañas El Alto",
+    description: "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking.",
+    stack: [
+      { name: "Next.js", icon: "nextjs/nextjs-original" },
+      { name: "TypeScript", icon: "typescript/typescript-original" },
+      { name: "Tailwind CSS", icon: "tailwindcss/tailwindcss-original" },
+      { name: "Sanity", icon: "sanity/sanity-original" },
+      { name: "Google Analytics", icon: "google/google-original" },
+    ],
+    github: "https://github.com/LeoCba07/el-alto-website",
+    live: "https://el-alto-website.vercel.app",
+    images: [
+      "/images/projects/el-alto-1.png",
+      "/images/projects/el-alto-2.png",
+      "/images/projects/el-alto-3.png",
+      "/images/projects/el-alto-4.png",
+      "/images/projects/el-alto-5.png",
+    ],
+    type: "desktop",
+  },
+  {
     title: "Nihongo Hero",
     description: "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA.",
     stack: [
