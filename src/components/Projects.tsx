@@ -247,38 +247,6 @@ const projects = [
     ],
     type: "desktop",
   },
-  {
-    title: "Tenki App",
-    description: "Weather app showing current conditions, 4-day forecast, and hourly breakdowns for any city. Features dark mode, geolocation detection, unit switching (°C/°F), and country flags. Built with OpenWeatherMap API.",
-    stack: [
-      { name: "JavaScript", icon: "javascript/javascript-original" },
-      { name: "HTML5", icon: "html5/html5-original" },
-      { name: "CSS3", icon: "css3/css3-original" },
-    ],
-    github: "https://github.com/LeoCba07/tenki-app",
-    live: null,
-    images: [
-      "/images/projects/tenki-app-1.png",
-      "/images/projects/tenki-app-2.png",
-    ],
-    type: "desktop",
-  },
-  {
-    title: "Watch List",
-    description: "A movie watchlist application to create custom lists, add movies, and write reviews. Built to practice Rails fundamentals, MVC architecture and Active Record associations.",
-    stack: [
-      { name: "Rails", icon: "rails/rails-plain" },
-      { name: "PostgreSQL", icon: "postgresql/postgresql-original" },
-      { name: "Bootstrap", icon: "bootstrap/bootstrap-original" },
-    ],
-    github: "https://github.com/LeoCba07/rails-watch-list",
-    live: null,
-    images: [
-      "/images/projects/watch-list-1.png",
-      "/images/projects/watch-list-2.png",
-    ],
-    type: "desktop",
-  },
 ]
 
 export default function Projects() {
