@@ -1,8 +1,16 @@
 # 💻 leandrotrabucco.me
 
-My little corner of the internet, a terminal-inspired portfolio showcasing my projects and new journey as a developer.
+Terminal-inspired developer portfolio showcasing my projects and journey as a developer.
 
 🔗 **Live:** [leandrotrabucco.me](https://leandrotrabucco.me)
+
+## Screenshots
+
+<p>
+  <img src="public/images/projects/portfolio-1.png" height="170" alt="Home">
+  <img src="public/images/projects/portfolio-2.png" height="170" alt="About">
+  <img src="public/images/projects/portfolio-3.png" height="170" alt="Projects">
+</p>
 
 ## Features
 
