@@ -2,13 +2,16 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
+const LINKS = ['About', 'Projects', 'Contact']
 export default function Navbar() {
-  const links = ['About', 'Projects', 'Contact']
   const [activeSection, setActiveSection] = useState('')
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      // Close mobile menu on scroll
+      if (isOpen) setIsOpen(false)
+
       const scrollTop = window.scrollY
       const windowHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
@@ -23,12 +26,12 @@ export default function Navbar() {
         return
       }
 
-      for (let i = links.length - 1; i >= 0; i--) {
-        const section = document.getElementById(links[i].toLowerCase())
+      for (let i = LINKS.length - 1; i >= 0; i--) {
+        const section = document.getElementById(LINKS[i].toLowerCase())
         if (section) {
           const rect = section.getBoundingClientRect()
           if (rect.top <= 150) {
-            setActiveSection(links[i].toLowerCase())
+            setActiveSection(LINKS[i].toLowerCase())
             return
           }
         }
@@ -37,25 +40,22 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll)
     handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
-  useEffect(() => {
-    const handleScroll = () => setIsOpen(false)
-    window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isOpen])
+
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-[#0a0a0a]/90 backdrop-blur-md z-50 border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold text-white hover:text-[#d4af37] transition font-mono">
+        <a href="#home" className="text-2xl font-bold text-white hover:text-[#d4af37] transition font-mono"
+        aria-label="Scroll to top">
           LT<span className="animate-blink text-[#d4af37]">_</span>
         </a>
 
         {/* Desktop nav */}
         <div className="hidden md:flex gap-8">
-          {links.map((link) => (
+          {LINKS.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
@@ -76,6 +76,8 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           className="md:hidden text-white p-2 hover:text-[#d4af37] transition"
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -86,10 +88,11 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-[#0a0a0a] border-t border-white/10">
           <div className="flex flex-col px-4 py-6 gap-6">
-            {links.map((link) => (
+            {LINKS.map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
+                aria-current={activeSection === link.toLowerCase() ? 'page' : undefined}
                 onClick={() => setIsOpen(false)}
                 className={`text-xl font-medium transition-colors duration-300 ${
                   activeSection === link.toLowerCase()
