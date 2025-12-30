@@ -21,10 +21,12 @@ export default function Footer() {
             </nav>
 
             <div className="flex gap-4">
-              <a href="https://github.com/LeoCba07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#d4af37] transition">
+              <a href="https://github.com/LeoCba07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#d4af37] transition"
+              aria-label="GitHub profile">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/in/leandro-trabucco" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#d4af37] transition">
+              <a href="https://linkedin.com/in/leandro-trabucco" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#d4af37] transition"
+              aria-label="LinkedIn profile">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
