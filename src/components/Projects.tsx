@@ -51,12 +51,14 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
           <button
             onClick={prev}
             className="group absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
+            aria-label="Previous image"
           >
             <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
           <button
             onClick={next}
             className="group absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
+            aria-label="Next image"
           >
             <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
@@ -66,6 +68,7 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
+                aria-label={`Go to image ${i + 1}`}
                 className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-[#d4af37]' : 'bg-white/20'}`}
               />
             ))}
@@ -160,6 +163,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             {project.github && (
               <a
                 href={project.github}
+                aria-label="GitHub project link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
@@ -172,6 +176,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               <a
                 href={project.live}
                 target="_blank"
+                aria-label="Live demo link"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
               >
