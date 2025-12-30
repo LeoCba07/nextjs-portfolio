@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'LT_',
+  title: 'Leandro Trabucco | Full Stack Developer',
   description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
   keywords: ['Full Stack Developer', 'Web Developer', 'Tokyo', 'React', 'Next.js', 'Rails'],
   authors: [{ name: 'Leandro Trabucco' }],
