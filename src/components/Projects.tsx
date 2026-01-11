@@ -193,7 +193,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 const projects = [
   {
-    title: "Cabañas El Alto",
+    title: "El Alto",
     description: "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking.",
     stack: [
       { name: "Next.js", icon: "nextjs/nextjs-original" },
@@ -203,7 +203,7 @@ const projects = [
       { name: "Google Analytics", icon: "google/google-original" },
     ],
     github: "https://github.com/LeoCba07/el-alto-website",
-    live: "https://el-alto-website.vercel.app",
+    live: "https://www.complejoelalto.com.ar",
     images: [
       "/images/projects/el-alto-1.png",
       "/images/projects/el-alto-2.png",
