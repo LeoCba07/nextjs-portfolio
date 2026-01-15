@@ -49,11 +49,20 @@ export default function Contact() {
             </a>
 
             <a
+              href="/Leandro_Trabucco_Curriculum.pdf"
+              download
+              className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
+            >
+              Curriculum
+              <img src="https://flagcdn.com/w40/ar.png" alt="AR" className="w-5 h-3 rounded-sm object-cover" />
+            </a>
+
+            <a
               href="/Leandro_Trabucco_Rirekisho.pdf"
               download
               className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
-              Resume
+              Rirekisho
               <img src="https://flagcdn.com/w40/jp.png" alt="JP" className="w-5 h-3 rounded-sm object-cover" />
             </a>
           </div>
