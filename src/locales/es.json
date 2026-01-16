@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "home": "Inicio"
+  },
+  "hero": {
+    "whoami": "$ whoami",
+    "name": "Leandro Trabucco",
+    "role": "rol",
+    "roleValue": "Desarrollador Full Stack",
+    "location": "ubicación",
+    "locationValue": "Tokio",
+    "seeProjects": "Ver Proyectos",
+    "contact": "Contacto"
+  },
+  "about": {
+    "badge": "Sobre mí",
+    "title": "Desarrollador Full Stack",
+    "subtitle": "Basado en Tokio",
+    "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida — tanto para los usuarios como para quienes lo desarrollan.",
+    "cta": "Ver mi trabajo",
+    "hobbies": ["levantar pesas", "videojuegos", "explorar cafés de Tokio", "viajar"],
+    "json": {
+      "name": "Leandro Trabucco",
+      "location": "Tokio, Japón",
+      "status": "Disponible para Trabajar"
+    }
+  },
+  "projects": {
+    "badge": "Mi Trabajo",
+    "title": "Proyectos",
+    "code": "Código",
+    "liveDemo": "Demo en Vivo",
+    "items": [
+      {
+        "title": "El Alto",
+        "description": "Sitio web para un complejo de cabañas en Tanti, Córdoba, Argentina. Construí un formulario de contacto estilo chatbot que recopila fechas y cantidad de huéspedes antes de abrir WhatsApp, resolviendo el problema de los mensajes vacíos de 'Hola'. Integré Sanity CMS para actualización de precios autoservicio y Google Analytics para seguimiento de conversiones."
+      },
+      {
+        "title": "Nihongo Hero",
+        "description": "Una app gamificada para aprender japonés con combate por turnos estilo RPG. Lideré el desarrollo de un equipo de 4 personas en 2 semanas, diseñando la arquitectura de base de datos, integrando la API de VoiceVox TTS, y siendo el mayor contribuidor. Desplegada como PWA mobile-first."
+      },
+      {
+        "title": "Adventure Maker",
+        "description": "Plataforma de narrativa interactiva impulsada por IA con historias ramificadas. Desarrollé ingeniería de prompts LLM para generación dinámica de historias, implementé generación de imágenes con la API de Gemini, y construí una evaluación psicológica que analiza patrones del usuario."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Disponible",
+    "title": "¿Tienes un proyecto?",
+    "subtitle": "Hablemos",
+    "email": "$ ping leandrotrabucco@gmail.com",
+    "cta": "Contáctame",
+    "resume": "Resume",
+    "curriculum": "Curriculum",
+    "rirekisho": "Rirekisho"
+  },
+  "footer": {
+    "copyright": "© 2025 Leandro Trabucco"
+  }
+}

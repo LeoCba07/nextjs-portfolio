@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "home": "Home"
+  },
+  "hero": {
+    "whoami": "$ whoami",
+    "name": "Leandro Trabucco",
+    "role": "role",
+    "roleValue": "Full Stack Developer",
+    "location": "location",
+    "locationValue": "Tokyo",
+    "seeProjects": "See Projects",
+    "contact": "Contact"
+  },
+  "about": {
+    "badge": "About Me",
+    "title": "Full Stack Developer",
+    "subtitle": "Based in Tokyo",
+    "bio": "Four years in hospitality taught me to obsess over user experience. Now I build software that makes life easier — for users and the people behind it.",
+    "cta": "See my work",
+    "hobbies": ["lifting heavy weights", "gaming", "exploring Tokyo cafés", "traveling"],
+    "json": {
+      "name": "Leandro Trabucco",
+      "location": "Tokyo, Japan",
+      "status": "Available for Work"
+    }
+  },
+  "projects": {
+    "badge": "My Work",
+    "title": "Projects",
+    "code": "Code",
+    "liveDemo": "Live Demo",
+    "items": [
+      {
+        "title": "El Alto",
+        "description": "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking."
+      },
+      {
+        "title": "Nihongo Hero",
+        "description": "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA."
+      },
+      {
+        "title": "Adventure Maker",
+        "description": "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Connect with me",
+    "title": "Let's Build Something",
+    "subtitle": "Together",
+    "email": "$ ping leandrotrabucco@gmail.com",
+    "cta": "Get In Touch",
+    "resume": "Resume",
+    "curriculum": "Curriculum",
+    "rirekisho": "Rirekisho"
+  },
+  "footer": {
+    "copyright": "© 2025 Leandro Trabucco"
+  }
+}

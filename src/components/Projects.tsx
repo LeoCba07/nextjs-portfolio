@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { useLanguage } from '@/context/LanguageContext'
 
 function PhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
@@ -126,7 +127,18 @@ function TechIcon({ name, icon }: { name: string; icon: string }) {
   )
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+interface ProjectTranslation {
+  title: string;
+  description: string;
+}
+
+function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: {
+  project: typeof projects[0];
+  index: number;
+  translation: ProjectTranslation;
+  codeLabel: string;
+  liveDemoLabel: string;
+}) {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
@@ -141,17 +153,17 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {project.images.length > 0 && (
           <div className="lg:w-1/2">
             {project.type === "mobile" ? (
-              <PhoneDeck images={project.images} alt={project.title} />
+              <PhoneDeck images={project.images} alt={translation.title} />
             ) : (
-              <BrowserCarousel images={project.images} alt={project.title} />
+              <BrowserCarousel images={project.images} alt={translation.title} />
             )}
           </div>
         )}
 
         {/* Content */}
         <div className={`flex-1 flex flex-col justify-center ${project.images.length === 0 ? 'lg:max-w-3xl' : ''}`}>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{project.title}</h3>
-          <p className="text-gray-400 text-lg leading-relaxed mb-6">{project.description}</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{translation.title}</h3>
+          <p className="text-gray-400 text-lg leading-relaxed mb-6">{translation.description}</p>
 
           <div className="flex flex-wrap gap-2 mb-6">
             {project.stack.map((tech) => (
@@ -169,7 +181,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
               >
                 <Github className="w-4 h-4" />
-                Code
+                {codeLabel}
               </a>
             )}
             {project.live && (
@@ -181,7 +193,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
               >
                 <ExternalLink className="w-4 h-4" />
-                Live Demo
+                {liveDemoLabel}
               </a>
             )}
           </div>
@@ -256,6 +268,8 @@ const projects = [
 
 export default function Projects() {
   const { ref, isVisible } = useScrollAnimation()
+  const { t } = useLanguage()
+  const projectTranslations = t('projects.items') as unknown as ProjectTranslation[]
 
   return (
     <section id="projects" className="py-24 px-4 md:px-8 relative z-10">
@@ -268,15 +282,22 @@ export default function Projects() {
           }`}
         >
           <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
-            <span>✦</span> My Work
+            <span>✦</span> {t('projects.badge') as string}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">{t('projects.title') as string}</h2>
         </div>
 
         {/* Each project card animates individually */}
         <div className="space-y-16">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+              translation={projectTranslations[index]}
+              codeLabel={t('projects.code') as string}
+              liveDemoLabel={t('projects.liveDemo') as string}
+            />
           ))}
         </div>
       </div>

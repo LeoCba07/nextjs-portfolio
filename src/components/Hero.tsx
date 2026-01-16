@@ -1,19 +1,26 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function Hero() {
+  const { language, t } = useLanguage()
   const [showRole, setShowRole] = useState(false)
   const [roleText, setRoleText] = useState('')
   const [showArrow, setShowArrow] = useState(false)
-  const fullRole = 'role: Full Stack Developer | location: Tokyo'
 
+  const fullRole = `${t('hero.role') as string}: ${t('hero.roleValue') as string} | ${t('hero.location') as string}: ${t('hero.locationValue') as string}`
+
+  // Reset animation when language changes
   useEffect(() => {
+    setRoleText('')
+    setShowArrow(false)
+    setShowRole(false)
     const startDelay = setTimeout(() => {
       setShowRole(true)
-    }, 800)
+    }, 100)
 
     return () => clearTimeout(startDelay)
-  }, [])
+  }, [language])
 
   useEffect(() => {
     if (showRole && roleText.length < fullRole.length) {
@@ -23,26 +30,25 @@ export default function Hero() {
       return () => clearTimeout(timeout)
     }
 
-    // Show arrow after typing finishes
-    if (roleText.length === fullRole.length) {
+    if (roleText.length === fullRole.length && roleText.length > 0) {
       const arrowDelay = setTimeout(() => {
         setShowArrow(true)
       }, 500)
       return () => clearTimeout(arrowDelay)
     }
-  }, [showRole, roleText])
+  }, [showRole, roleText, fullRole])
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-8 relative z-10">
 
       <div className="font-mono animate-fade-in-up mb-2">
         <p className="text-gray-500 text-sm">
-          $ whoami<span className="animate-blink text-[#d4af37]">_</span>
+          {t('hero.whoami') as string}<span className="animate-blink text-[#d4af37]">_</span>
         </p>
       </div>
 
       <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 animate-fade-in-up animation-delay-200">
-        Leandro Trabucco
+        {t('hero.name') as string}
       </h1>
 
       <div className="font-mono h-8 animate-fade-in-up animation-delay-400">
@@ -67,13 +73,13 @@ export default function Hero() {
           href="#projects"
           className="text-white hover:text-[#d4af37] transition"
         >
-          [<span className="mx-1">See Projects</span>]
+          [<span className="mx-1">{t('hero.seeProjects') as string}</span>]
         </a>
         <a
           href="#contact"
           className="text-gray-500 hover:text-[#d4af37] transition"
         >
-          [<span className="mx-1">Contact</span>]
+          [<span className="mx-1">{t('hero.contact') as string}</span>]
         </a>
       </div>
 

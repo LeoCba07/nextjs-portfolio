@@ -1,9 +1,11 @@
 'use client'
 import { Mail, Github, Linkedin } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function Contact() {
   const { ref, isVisible } = useScrollAnimation()
+  const { t } = useLanguage()
 
   return (
     <section id="contact" className="min-h-[80vh] flex items-center px-4 md:px-8 relative z-10">
@@ -15,18 +17,18 @@ export default function Contact() {
       >
         {/* Badge */}
         <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-6">
-          <span>✦</span> Connect with me
+          <span>✦</span> {t('contact.badge') as string}
         </span>
 
         <h2 className="text-5xl md:text-6xl font-bold text-white mb-3">
-          Let's Build Something
+          {t('contact.title') as string}
         </h2>
         <h3 className="text-4xl md:text-5xl font-bold text-[#d4af37] mb-6">
-          Together
+          {t('contact.subtitle') as string}
         </h3>
 
         <p className="text-gray-500 text-lg mb-12 font-mono">
-          $ ping leandrotrabucco@gmail.com
+          {t('contact.email') as string}
         </p>
 
         <div className="flex flex-col items-center gap-6">
@@ -35,7 +37,7 @@ export default function Contact() {
             className="inline-flex items-center gap-3 bg-white text-black font-medium px-8 py-4 rounded-lg hover:bg-[#d4af37] transition-all duration-300"
           >
             <Mail className="w-5 h-5" />
-            Get In Touch
+            {t('contact.cta') as string}
           </a>
 
           <div className="flex gap-4">
@@ -44,7 +46,7 @@ export default function Contact() {
               download
               className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
-              Resume
+              {t('contact.resume') as string}
               <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-5 h-3 rounded-sm object-cover" />
             </a>
 
@@ -53,7 +55,7 @@ export default function Contact() {
               download
               className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
-              Curriculum
+              {t('contact.curriculum') as string}
               <img src="https://flagcdn.com/w40/ar.png" alt="AR" className="w-5 h-3 rounded-sm object-cover" />
             </a>
 
@@ -62,7 +64,7 @@ export default function Contact() {
               download
               className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
-              Rirekisho
+              {t('contact.rirekisho') as string}
               <img src="https://flagcdn.com/w40/jp.png" alt="JP" className="w-5 h-3 rounded-sm object-cover" />
             </a>
           </div>

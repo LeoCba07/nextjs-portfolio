@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import Image from 'next/image'
 import { ArrowDown } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
 
 const techStackTop = [
   { name: "Rails", icon: "rails/rails-plain" },
@@ -49,10 +50,18 @@ function TechMarquee({ items, direction = 'left' }: { items: typeof techStackTop
 
 export default function About() {
   const { ref, isVisible } = useScrollAnimation()
-  const words = ['lifting heavy weights', 'gaming', 'exploring Tokyo cafés', 'traveling']
+  const { language, t } = useLanguage()
+  const words = t('about.hobbies') as string[]
   const [currentWord, setCurrentWord] = useState(0)
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+
+  // Reset hobby animation when language changes
+  useEffect(() => {
+    setCurrentWord(0)
+    setDisplayText('')
+    setIsDeleting(false)
+  }, [language])
 
   useEffect(() => {
     const word = words[currentWord]
@@ -72,7 +81,7 @@ export default function About() {
     }, isDeleting ? 50 : 100)
 
     return () => clearTimeout(timeout)
-  }, [displayText, isDeleting, currentWord])
+  }, [displayText, isDeleting, currentWord, words])
 
   return (
     <section id="about" className="py-24 md:py-32 lg:py-40 px-4 md:px-8 relative z-10">
@@ -87,19 +96,18 @@ export default function About() {
           {/* Left - Text Content */}
           <div className="flex-1 min-w-0 w-full">
             <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
-              <span>✦</span> About Me
+              <span>✦</span> {t('about.badge') as string}
             </span>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
-              Full Stack Developer
+              {t('about.title') as string}
             </h2>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#d4af37] mb-8">
-              Based in Tokyo
+              {t('about.subtitle') as string}
             </h3>
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-10">
-              Four years in hospitality taught me to obsess over user experience.
-              Now I build software that makes life easier — for users and the people behind it.
+              {t('about.bio') as string}
             </p>
 
             <div className="space-y-3 mb-10 overflow-hidden">
@@ -111,7 +119,7 @@ export default function About() {
               href="#projects"
               className="inline-flex items-center gap-2 bg-white/5 border border-white/10 hover:border-[#d4af37]/50 text-white px-5 py-3 rounded-lg transition-all group"
             >
-              See my work
+              {t('about.cta') as string}
               <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </a>
           </div>
@@ -144,19 +152,19 @@ export default function About() {
                 <div className="pl-4">
                   <span className="text-[#d4af37]">"name"</span>
                   <span className="text-gray-500">: </span>
-                  <span className="text-emerald-400">"Leandro Trabucco"</span>
+                  <span className="text-emerald-400">"{(t('about.json') as Record<string, string>).name}"</span>
                   <span className="text-gray-500">,</span>
                 </div>
                 <div className="pl-4">
                   <span className="text-[#d4af37]">"location"</span>
                   <span className="text-gray-500">: </span>
-                  <span className="text-emerald-400">"Tokyo, Japan"</span>
+                  <span className="text-emerald-400">"{(t('about.json') as Record<string, string>).location}"</span>
                   <span className="text-gray-500">,</span>
                 </div>
                 <div className="pl-4">
                   <span className="text-[#d4af37]">"status"</span>
                   <span className="text-gray-500">: </span>
-                  <span className="text-emerald-400">"Available for Work"</span>
+                  <span className="text-emerald-400">"{(t('about.json') as Record<string, string>).status}"</span>
                   <span className="text-gray-500">,</span>
                 </div>
                 <div className="pl-4">
