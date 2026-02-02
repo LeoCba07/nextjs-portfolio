@@ -15,7 +15,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isOpen) setIsOpen(false)
+      // Close the mobile menu when the user scrolls
+      setIsOpen(false)
 
       const scrollTop = window.scrollY
       const windowHeight = window.innerHeight
@@ -47,7 +48,7 @@ export default function Navbar() {
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isOpen])
+  }, [])
 
 
   return (
