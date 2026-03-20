@@ -11,20 +11,20 @@
     "role": "rol",
     "roleValue": "Desarrollador Full Stack",
     "location": "ubicación",
-    "locationValue": "Tokio",
+    "locationValue": "Latinoamérica",
     "seeProjects": "Ver Proyectos",
     "contact": "Contacto"
   },
   "about": {
     "badge": "Sobre mí",
     "title": "Desarrollador Full Stack",
-    "subtitle": "Basado en Tokio",
+    "subtitle": "Basado en Latinoamérica",
     "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida — tanto para los usuarios como para quienes lo desarrollan.",
     "cta": "Ver mi trabajo",
-    "hobbies": ["levantar pesas", "videojuegos", "explorar cafés de Tokio", "viajar"],
+    "hobbies": ["levantar pesas", "videojuegos", "explorar cafés", "viajar"],
     "json": {
       "name": "Leandro Trabucco",
-      "location": "Tokio, Japón",
+      "location": "Latinoamérica",
       "status": "Disponible para Trabajar"
     }
   },
@@ -59,6 +59,6 @@
     "rirekisho": "Rirekisho"
   },
   "footer": {
-    "copyright": "© 2025 Leandro Trabucco"
+    "copyright": "© 2026 Leandro Trabucco"
   }
 }
