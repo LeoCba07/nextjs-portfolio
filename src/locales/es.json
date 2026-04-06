@@ -11,20 +11,20 @@
     "role": "rol",
     "roleValue": "Desarrollador Full Stack",
     "location": "ubicación",
-    "locationValue": "Latinoamérica",
+    "locationValue": "Argentina",
     "seeProjects": "Ver Proyectos",
     "contact": "Contacto"
   },
   "about": {
     "badge": "Sobre mí",
     "title": "Desarrollador Full Stack",
-    "subtitle": "Basado en Latinoamérica",
+    "subtitle": "Basado en Argentina",
     "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida — tanto para los usuarios como para quienes lo desarrollan.",
     "cta": "Ver mi trabajo",
     "hobbies": ["levantar pesas", "videojuegos", "explorar cafés", "viajar"],
     "json": {
       "name": "Leandro Trabucco",
-      "location": "Latinoamérica",
+      "location": "Argentina",
       "status": "Disponible para Trabajar"
     }
   },
