@@ -33,6 +33,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // SSR-safe hydration from external state (localStorage + navigator) requires setState in effect.
+    /* eslint-disable react-hooks/set-state-in-effect */
     const stored = localStorage.getItem(STORAGE_KEY) as Language | null
     if (stored && (stored === 'en' || stored === 'es')) {
       setLanguageState(stored)
@@ -43,6 +45,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }
     }
     setMounted(true)
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [])
 
   const setLanguage = (lang: Language) => {

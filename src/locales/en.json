@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "About",
+    "education": "Education",
     "projects": "Projects",
     "contact": "Contact",
     "home": "Home"
@@ -19,7 +20,7 @@
     "badge": "About Me",
     "title": "Full Stack Developer",
     "subtitle": "Based in Argentina",
-    "bio": "Four years in hospitality taught me to obsess over user experience. Now I build software that makes life easier — for users and the people behind it.",
+    "bio": "Four years in hospitality taught me to obsess over user experience. Now I build software that makes life easier, for users and the people behind it.",
     "cta": "See my work",
     "hobbies": ["lifting heavy weights", "gaming", "exploring cafés", "traveling"],
     "json": {
@@ -28,12 +29,39 @@
       "status": "Available for Work"
     }
   },
+  "education": {
+    "badge": "Where I Learned",
+    "title": "Education",
+    "items": [
+      {
+        "logo": "/images/logo-utn-small.jpg",
+        "logoTheme": "light",
+        "degree": "Associate's Degree in Computer Programming",
+        "school": "Universidad Tecnológica Nacional",
+        "place": "Argentina",
+        "period": "May 2026 - Current",
+        "summary": "Three-year degree pursued alongside freelance and personal projects. Covers software architecture, data structures, databases, object-oriented programming, algorithms, and modern web development. Adds academic grounding to the work I've been shipping in production, and opens the door to more rigorous backend and systems territory."
+      },
+      {
+        "logo": "/images/logo-lewagon.svg",
+        "degree": "AI Software Development Bootcamp",
+        "school": "Le Wagon Tokyo",
+        "place": "Japan",
+        "period": "Oct 2025 - Dec 2025",
+        "summary": "Intensive 9-week full-stack program in Tokyo, covering Ruby on Rails, JavaScript, relational databases, REST APIs, and LLM integration. Pair programming, code reviews, and project-based learning from day one. The final two weeks were a team-built capstone ([Nihongo Hero](#projects)) where I led the four-person dev team and shipped a deployed mobile-first PWA."
+      }
+    ]
+  },
   "projects": {
     "badge": "My Work",
     "title": "Projects",
     "code": "Code",
     "liveDemo": "Live Demo",
     "items": [
+      {
+        "title": "Jidou Navi",
+        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Sole developer since early 2026 (started with a partner), owning frontend, backend, and mobile deployment. Currently in closed testing on Google Play Store."
+      },
       {
         "title": "El Alto",
         "description": "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking."
@@ -52,11 +80,10 @@
     "badge": "Connect with me",
     "title": "Let's Build Something",
     "subtitle": "Together",
-    "email": "$ ping leandrotrabucco@gmail.com",
     "cta": "Get In Touch",
-    "resume": "Resume",
-    "curriculum": "Curriculum",
-    "rirekisho": "Rirekisho"
+    "resume": "Resume (EN)",
+    "curriculum": "Currículum (ES)",
+    "rirekisho": "履歴書 (JP)"
   },
   "footer": {
     "copyright": "© 2026 Leandro Trabucco"

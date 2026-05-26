@@ -1,15 +1,34 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { useLanguage } from '@/context/LanguageContext'
 
-function PhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+type Tech = { name: string; icon: string }
+
+interface Project {
+  title: string
+  stack: Tech[]
+  github: string | null
+  live: string | null
+  images: string[]
+  type: 'mobile' | 'desktop'
+}
+
+function PhoneFrame({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`relative w-[100px] sm:w-[130px] md:w-[160px] flex-shrink-0 ${className}`}>
-      <div className="bg-[#1a1a1a] rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl border border-white/10">
+      <div className="bg-bezel rounded-[1.2rem] md:rounded-[1.5rem] p-1 shadow-2xl border border-white/10">
         <div className="rounded-[1rem] md:rounded-[1.25rem] overflow-hidden bg-black">
-          <img src={src} alt={alt} className="w-full" />
+          <Image
+            src={src}
+            alt={alt}
+            width={320}
+            height={693}
+            className="w-full h-auto"
+            sizes="(min-width: 768px) 160px, (min-width: 640px) 130px, 100px"
+          />
         </div>
       </div>
     </div>
@@ -35,13 +54,18 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
             {alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
           </div>
         </div>
-        <div className="relative border border-white/10 border-t-0 rounded-b-lg overflow-hidden shadow-2xl bg-[#0d0d0d] aspect-video">
+        <div className="relative border border-white/10 border-t-0 rounded-b-lg overflow-hidden shadow-2xl bg-panel aspect-video">
           {images.map((img, i) => (
-            <img
+            <Image
               key={i}
               src={img}
               alt={`${alt} ${i + 1}`}
-              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className={`object-contain transition-opacity duration-300 ${
+                i === current ? 'opacity-100' : 'opacity-0'
+              }`}
+              priority={i === 0}
             />
           ))}
         </div>
@@ -51,27 +75,34 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
         <>
           <button
             onClick={prev}
-            className="group absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
+            className="group absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
           <button
             onClick={next}
-            className="group absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition"
+            className="group absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition"
             aria-label="Next image"
           >
             <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white transition" />
           </button>
 
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center mt-2">
             {images.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
                 aria-label={`Go to image ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition ${i === current ? 'bg-[#d4af37]' : 'bg-white/20'}`}
-              />
+                aria-current={i === current ? 'true' : undefined}
+                className="p-3 group"
+              >
+                <span
+                  className={`block w-2 h-2 rounded-full transition ${
+                    i === current ? 'bg-gold' : 'bg-white/20 group-hover:bg-white/40'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </>
@@ -85,22 +116,25 @@ function PhoneDeck({ images, alt }: { images: string[]; alt: string }) {
 
   const getStyles = (index: number) => {
     const collapsed = [
-      "-translate-x-12 sm:-translate-x-18 md:-translate-x-20 -rotate-6 translate-y-2",
-      "translate-x-0 z-10 -translate-y-2",
-      "translate-x-12 sm:translate-x-18 md:translate-x-20 rotate-6 translate-y-2"
+      '-translate-x-12 sm:-translate-x-18 md:-translate-x-20 -rotate-6 translate-y-2',
+      'translate-x-0 z-10 -translate-y-2',
+      'translate-x-12 sm:translate-x-18 md:translate-x-20 rotate-6 translate-y-2',
     ]
     const expanded = [
-      "-translate-x-28 sm:-translate-x-32 md:-translate-x-40 -rotate-6 translate-y-2",
-      "translate-x-0 z-10 -translate-y-2",
-      "translate-x-28 sm:translate-x-32 md:translate-x-40 rotate-6 translate-y-2"
+      '-translate-x-28 sm:-translate-x-32 md:-translate-x-40 -rotate-6 translate-y-2',
+      'translate-x-0 z-10 -translate-y-2',
+      'translate-x-28 sm:translate-x-32 md:translate-x-40 rotate-6 translate-y-2',
     ]
     return isExpanded ? expanded[index] : collapsed[index]
   }
 
   return (
-    <div
-      className="relative h-[320px] md:h-[420px] w-full flex justify-center items-center cursor-pointer"
+    <button
+      type="button"
       onClick={() => setIsExpanded(!isExpanded)}
+      aria-label={isExpanded ? 'Collapse phone deck' : 'Expand phone deck'}
+      aria-expanded={isExpanded}
+      className="relative h-[320px] md:h-[420px] w-full flex justify-center items-center cursor-pointer bg-transparent border-0 p-0"
     >
       {images.map((img, i) => (
         <div
@@ -110,49 +144,54 @@ function PhoneDeck({ images, alt }: { images: string[]; alt: string }) {
           <PhoneFrame src={img} alt={`${alt} ${i + 1}`} />
         </div>
       ))}
-    </div>
+    </button>
   )
 }
 
-function TechIcon({ name, icon }: { name: string; icon: string }) {
+function TechIcon({ name, icon }: Tech) {
   return (
     <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
-      <img
-        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}.svg`}
-        alt={name}
-        className="w-4 h-4"
-      />
+      <Image src={icon} alt="" width={16} height={16} className="w-4 h-4" />
       <span className="text-xs text-gray-400">{name}</span>
     </div>
   )
 }
 
 interface ProjectTranslation {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
-function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: {
-  project: typeof projects[0];
-  index: number;
-  translation: ProjectTranslation;
-  codeLabel: string;
-  liveDemoLabel: string;
+function ProjectCard({
+  project,
+  index,
+  translation,
+  codeLabel,
+  liveDemoLabel,
+}: {
+  project: Project
+  index: number
+  translation: ProjectTranslation
+  codeLabel: string
+  liveDemoLabel: string
 }) {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
     <div
       ref={ref}
-      className={`bg-white/[0.02] p-6 md:p-10 rounded-2xl border border-white/10 hover:border-[#d4af37]/30 transition-all duration-1000 ease-out ${
+      className={`bg-white/[0.02] p-6 md:p-10 rounded-2xl border border-white/10 hover:border-gold/30 transition-all duration-1000 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
       }`}
     >
-      <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
-        {/* Images */}
+      <div
+        className={`flex flex-col ${
+          index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+        } gap-8 lg:gap-12`}
+      >
         {project.images.length > 0 && (
           <div className="lg:w-1/2">
-            {project.type === "mobile" ? (
+            {project.type === 'mobile' ? (
               <PhoneDeck images={project.images} alt={translation.title} />
             ) : (
               <BrowserCarousel images={project.images} alt={translation.title} />
@@ -160,8 +199,11 @@ function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: 
           </div>
         )}
 
-        {/* Content */}
-        <div className={`flex-1 flex flex-col justify-center ${project.images.length === 0 ? 'lg:max-w-3xl' : ''}`}>
+        <div
+          className={`flex-1 flex flex-col justify-center ${
+            project.images.length === 0 ? 'lg:max-w-3xl' : ''
+          }`}
+        >
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{translation.title}</h3>
           <p className="text-gray-400 text-lg leading-relaxed mb-6">{translation.description}</p>
 
@@ -178,7 +220,7 @@ function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: 
                 aria-label="GitHub project link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
+                className="inline-flex items-center gap-2 border border-white/10 hover:border-gold/50 bg-white/5 text-gray-300 hover:text-white px-4 py-2 rounded-lg transition"
               >
                 <Github className="w-4 h-4" />
                 {codeLabel}
@@ -190,7 +232,7 @@ function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: 
                 target="_blank"
                 aria-label="Live demo link"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] px-4 py-2 rounded-lg transition"
+                className="inline-flex items-center gap-2 bg-gold/20 hover:bg-gold/30 text-gold px-4 py-2 rounded-lg transition"
               >
                 <ExternalLink className="w-4 h-4" />
                 {liveDemoLabel}
@@ -203,66 +245,81 @@ function ProjectCard({ project, index, translation, codeLabel, liveDemoLabel }: 
   )
 }
 
-const projects = [
+const projects: Project[] = [
   {
-    title: "El Alto",
-    description: "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking.",
+    title: 'Jidou Navi',
     stack: [
-      { name: "Next.js", icon: "nextjs/nextjs-original" },
-      { name: "TypeScript", icon: "typescript/typescript-original" },
-      { name: "Tailwind CSS", icon: "tailwindcss/tailwindcss-original" },
-      { name: "Sanity", icon: "sanity/sanity-original" },
-      { name: "Google Analytics", icon: "google/google-original" },
+      { name: 'React Native', icon: '/icons/devicons/react.svg' },
+      { name: 'TypeScript', icon: '/icons/devicons/typescript.svg' },
+      { name: 'Expo', icon: '/icons/brands/expo.svg' },
+      { name: 'Supabase', icon: '/icons/devicons/supabase.svg' },
+      { name: 'Mapbox', icon: '/icons/brands/mapbox.svg' },
     ],
-    github: "https://github.com/LeoCba07/el-alto-website",
-    live: "https://www.complejoelalto.com.ar",
+    github: null,
+    live: 'https://www.jidou-navi.app',
     images: [
-      "/images/projects/el-alto-1.png",
-      "/images/projects/el-alto-2.png",
-      "/images/projects/el-alto-3.png",
-      "/images/projects/el-alto-4.png",
-      "/images/projects/el-alto-5.png",
+      '/images/projects/jidou-navi-1.webp',
+      '/images/projects/jidou-navi-2.webp',
+      '/images/projects/jidou-navi-3.webp',
     ],
-    type: "desktop",
+    type: 'mobile',
   },
   {
-    title: "Nihongo Hero",
-    description: "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA.",
+    title: 'El Alto',
     stack: [
-      { name: "Rails", icon: "rails/rails-plain" },
-      { name: "JavaScript", icon: "javascript/javascript-original" },
-      { name: "SCSS", icon: "sass/sass-original" },
-      { name: "Bootstrap", icon: "bootstrap/bootstrap-original" },
-      { name: "PostgreSQL", icon: "postgresql/postgresql-original" },
-      { name: "Heroku", icon: "heroku/heroku-original" },
+      { name: 'Next.js', icon: '/icons/devicons/nextjs.svg' },
+      { name: 'TypeScript', icon: '/icons/devicons/typescript.svg' },
+      { name: 'Tailwind CSS', icon: '/icons/devicons/tailwindcss.svg' },
+      { name: 'Sanity', icon: '/icons/devicons/sanity.svg' },
+      { name: 'Google Analytics', icon: '/icons/devicons/google.svg' },
     ],
-    github: "https://github.com/ShinOWfu/Nihongo-Hero",
-    live: "https://www.nihongohero.quest/",
+    github: 'https://github.com/LeoCba07/el-alto-website',
+    live: 'https://www.complejoelalto.com.ar',
     images: [
-      "/images/projects/nihongo-hero-1.png",
-      "/images/projects/nihongo-hero-2.png",
-      "/images/projects/nihongo-hero-3.png",
+      '/images/projects/el-alto-1.png',
+      '/images/projects/el-alto-2.png',
+      '/images/projects/el-alto-3.png',
+      '/images/projects/el-alto-4.png',
+      '/images/projects/el-alto-5.png',
     ],
-    type: "mobile",
+    type: 'desktop',
   },
   {
-    title: "Adventure Maker",
-    description: "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns.",
+    title: 'Nihongo Hero',
     stack: [
-      { name: "Rails", icon: "rails/rails-plain" },
-      { name: "Gemini API", icon: "google/google-original" },
-      { name: "SCSS", icon: "sass/sass-original" },
-      { name: "Bootstrap", icon: "bootstrap/bootstrap-original" },
-      { name: "PostgreSQL", icon: "postgresql/postgresql-original" },
+      { name: 'Rails', icon: '/icons/devicons/rails.svg' },
+      { name: 'JavaScript', icon: '/icons/devicons/javascript.svg' },
+      { name: 'SCSS', icon: '/icons/devicons/sass.svg' },
+      { name: 'Bootstrap', icon: '/icons/devicons/bootstrap.svg' },
+      { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
+      { name: 'Heroku', icon: '/icons/devicons/heroku.svg' },
     ],
-    github: "https://github.com/ShinOWfu/AdventureMaker",
+    github: 'https://github.com/ShinOWfu/Nihongo-Hero',
+    live: 'https://www.nihongohero.quest/',
+    images: [
+      '/images/projects/nihongo-hero-1.png',
+      '/images/projects/nihongo-hero-2.png',
+      '/images/projects/nihongo-hero-3.png',
+    ],
+    type: 'mobile',
+  },
+  {
+    title: 'Adventure Maker',
+    stack: [
+      { name: 'Rails', icon: '/icons/devicons/rails.svg' },
+      { name: 'Gemini API', icon: '/icons/devicons/google.svg' },
+      { name: 'SCSS', icon: '/icons/devicons/sass.svg' },
+      { name: 'Bootstrap', icon: '/icons/devicons/bootstrap.svg' },
+      { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
+    ],
+    github: 'https://github.com/ShinOWfu/AdventureMaker',
     live: null,
     images: [
-      "/images/projects/adventure-maker-1.png",
-      "/images/projects/adventure-maker-2.png",
-      "/images/projects/adventure-maker-3.png",
+      '/images/projects/adventure-maker-1.png',
+      '/images/projects/adventure-maker-2.png',
+      '/images/projects/adventure-maker-3.png',
     ],
-    type: "desktop",
+    type: 'desktop',
   },
 ]
 
@@ -274,20 +331,20 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-4 md:px-8 relative z-10">
       <div className="max-w-6xl mx-auto">
-        {/* Header animates in */}
         <div
           ref={ref}
           className={`transition-all duration-1000 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
           }`}
         >
-          <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-2">
+          <span className="inline-flex items-center gap-2 text-gold text-sm mb-2">
             <span>✦</span> {t('projects.badge') as string}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">{t('projects.title') as string}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
+            {t('projects.title') as string}
+          </h2>
         </div>
 
-        {/* Each project card animates individually */}
         <div className="space-y-16">
           {projects.map((project, index) => (
             <ProjectCard

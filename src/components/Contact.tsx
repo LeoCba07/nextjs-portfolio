@@ -1,7 +1,16 @@
 'use client'
+import Image from 'next/image'
 import { Mail, Github, Linkedin } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { useLanguage } from '@/context/LanguageContext'
+import {
+  EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  RESUME_PATH,
+  CURRICULUM_PATH,
+  RIREKISHO_PATH,
+} from '@/lib/constants'
 
 export default function Contact() {
   const { ref, isVisible } = useScrollAnimation()
@@ -15,75 +24,75 @@ export default function Contact() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
         }`}
       >
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 text-[#d4af37] text-sm mb-6">
+        <span className="inline-flex items-center gap-2 text-gold text-sm mb-6">
           <span>✦</span> {t('contact.badge') as string}
         </span>
 
         <h2 className="text-5xl md:text-6xl font-bold text-white mb-3">
           {t('contact.title') as string}
         </h2>
-        <h3 className="text-4xl md:text-5xl font-bold text-[#d4af37] mb-6">
+        <h3 className="text-4xl md:text-5xl font-bold text-gold mb-6">
           {t('contact.subtitle') as string}
         </h3>
 
-        <p className="text-gray-500 text-lg mb-12 font-mono">
-          {t('contact.email') as string}
+        <p className="text-gray-400 text-lg mb-12 font-mono break-all">
+          $ ping {EMAIL}
         </p>
 
         <div className="flex flex-col items-center gap-6">
           <a
-            href="mailto:leandrotrabucco@gmail.com"
-            className="inline-flex items-center gap-3 bg-white text-black font-medium px-8 py-4 rounded-lg hover:bg-[#d4af37] transition-all duration-300"
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-3 bg-white text-black font-medium px-8 py-4 rounded-lg hover:bg-gold transition-all duration-300"
           >
             <Mail className="w-5 h-5" />
             {t('contact.cta') as string}
           </a>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="/Leandro_Trabucco_Resume.pdf"
+              href={RESUME_PATH}
               download
-              className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
+              className="inline-flex items-center gap-3 border border-white/10 hover:border-gold/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
               {t('contact.resume') as string}
-              <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-5 h-3 rounded-sm object-cover" />
+              <Image src="/icons/flags/us.svg" alt="" width={20} height={14} className="rounded-sm" />
             </a>
 
             <a
-              href="/Leandro_Trabucco_Curriculum.pdf"
+              href={CURRICULUM_PATH}
               download
-              className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
+              className="inline-flex items-center gap-3 border border-white/10 hover:border-gold/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
               {t('contact.curriculum') as string}
-              <img src="https://flagcdn.com/w40/ar.png" alt="AR" className="w-5 h-3 rounded-sm object-cover" />
+              <Image src="/icons/flags/ar.svg" alt="" width={20} height={14} className="rounded-sm" />
             </a>
 
             <a
-              href="/Leandro_Trabucco_Rirekisho.pdf"
+              href={RIREKISHO_PATH}
               download
-              className="inline-flex items-center gap-3 border border-white/10 hover:border-[#d4af37]/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
+              className="inline-flex items-center gap-3 border border-white/10 hover:border-gold/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
             >
               {t('contact.rirekisho') as string}
-              <img src="https://flagcdn.com/w40/jp.png" alt="JP" className="w-5 h-3 rounded-sm object-cover" />
+              <Image src="/icons/flags/jp.svg" alt="" width={20} height={14} className="rounded-sm" />
             </a>
           </div>
 
-          {/* Social links */}
           <div className="flex gap-6 mt-4">
             <a
-              href="https://github.com/LeoCba07"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-[#d4af37] transition"
+              aria-label="GitHub profile"
+              className="text-gray-500 hover:text-gold transition"
             >
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com/in/leandro-trabucco"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-[#d4af37] transition"
+              aria-label="LinkedIn profile"
+              className="text-gray-500 hover:text-gold transition"
             >
               <Linkedin className="w-5 h-5" />
             </a>

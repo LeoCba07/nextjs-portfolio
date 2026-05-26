@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "Sobre mí",
+    "education": "Educación",
     "projects": "Proyectos",
     "contact": "Contacto",
     "home": "Inicio"
@@ -19,7 +20,7 @@
     "badge": "Sobre mí",
     "title": "Desarrollador Full Stack",
     "subtitle": "Basado en Argentina",
-    "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida — tanto para los usuarios como para quienes lo desarrollan.",
+    "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida, tanto para los usuarios como para quienes lo desarrollan.",
     "cta": "Ver mi trabajo",
     "hobbies": ["levantar pesas", "videojuegos", "explorar cafés", "viajar"],
     "json": {
@@ -28,12 +29,39 @@
       "status": "Disponible para Trabajar"
     }
   },
+  "education": {
+    "badge": "Dónde aprendí",
+    "title": "Educación",
+    "items": [
+      {
+        "logo": "/images/logo-utn-small.jpg",
+        "logoTheme": "light",
+        "degree": "Tecnicatura Universitaria en Programación",
+        "school": "Universidad Tecnológica Nacional",
+        "place": "Argentina",
+        "period": "May 2026 - Actualidad",
+        "summary": "Carrera de tres años cursada en paralelo con trabajo freelance y proyectos personales. Cubre arquitectura de software, estructuras de datos, bases de datos, programación orientada a objetos, algoritmos y desarrollo web moderno. Suma fundamento académico al trabajo que ya vengo enviando a producción, y abre la puerta a terreno más exigente de backend y sistemas."
+      },
+      {
+        "logo": "/images/logo-lewagon.svg",
+        "degree": "Bootcamp de Desarrollo de Software con IA",
+        "school": "Le Wagon Tokio",
+        "place": "Japón",
+        "period": "Oct 2025 - Dic 2025",
+        "summary": "Programa intensivo full-stack de 9 semanas en Tokio, que abarca Ruby on Rails, JavaScript, bases de datos relacionales, APIs REST e integración con LLMs. Programación en pareja, revisiones de código y aprendizaje por proyectos desde el primer día. Las últimas dos semanas fueron un proyecto final en equipo ([Nihongo Hero](#projects)), donde lideré al grupo de cuatro desarrolladores y desplegamos una PWA mobile-first en producción."
+      }
+    ]
+  },
   "projects": {
     "badge": "Mi Trabajo",
     "title": "Proyectos",
     "code": "Código",
     "liveDemo": "Demo en Vivo",
     "items": [
+      {
+        "title": "Jidou Navi",
+        "description": "App móvil colaborativa para descubrir las máquinas expendedoras únicas de Japón, con mapa interactivo y check-ins gamificados. Desarrollador único desde principios de 2026 (comenzó con un socio), a cargo del frontend, backend y despliegue móvil. Actualmente en pruebas cerradas en Google Play Store."
+      },
       {
         "title": "El Alto",
         "description": "Sitio web para un complejo de cabañas en Tanti, Córdoba, Argentina. Construí un formulario de contacto estilo chatbot que recopila fechas y cantidad de huéspedes antes de abrir WhatsApp, resolviendo el problema de los mensajes vacíos de 'Hola'. Integré Sanity CMS para actualización de precios autoservicio y Google Analytics para seguimiento de conversiones."
@@ -52,11 +80,10 @@
     "badge": "Disponible",
     "title": "¿Tienes un proyecto?",
     "subtitle": "Hablemos",
-    "email": "$ ping leandrotrabucco@gmail.com",
     "cta": "Contáctame",
-    "resume": "Resume",
-    "curriculum": "Curriculum",
-    "rirekisho": "Rirekisho"
+    "resume": "Resume (EN)",
+    "curriculum": "Currículum (ES)",
+    "rirekisho": "履歴書 (JP)"
   },
   "footer": {
     "copyright": "© 2026 Leandro Trabucco"

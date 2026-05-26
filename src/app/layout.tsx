@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, LOCATION, SITE_URL } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,39 +14,79 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "Leandro Trabucco | Full Stack Developer";
+const description = `Full Stack Developer based in ${LOCATION.country}. Building software that makes life easier with React, Next.js, TypeScript, and Ruby on Rails.`;
+
 export const metadata: Metadata = {
-  title: 'Leandro Trabucco | Full Stack Developer',
-  description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
-  keywords: ['Full Stack Developer', 'Web Developer', 'Tokyo', 'React', 'Next.js', 'Rails'],
-  authors: [{ name: 'Leandro Trabucco' }],
-  creator: 'Leandro Trabucco',
+  metadataBase: new URL(SITE_URL),
+  title,
+  description,
+  keywords: [
+    "Full Stack Developer",
+    "Web Developer",
+    "Argentina",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Rails",
+    "React Native",
+    "Leandro Trabucco",
+  ],
+  authors: [{ name: "Leandro Trabucco", url: SITE_URL }],
+  creator: "Leandro Trabucco",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "es-AR": "/",
+    },
+  },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://leandrotrabucco.me',
-    siteName: 'Leandro Trabucco',
-    title: 'Leandro Trabucco | Full Stack Developer',
-    description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
+    type: "website",
+    locale: "en_US",
+    alternateLocale: ["es_AR"],
+    url: SITE_URL,
+    siteName: "Leandro Trabucco",
+    title,
+    description,
     images: [
       {
-        url: 'https://leandrotrabucco.me/images/og-image.png',
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: 'Leandro Trabucco - Full Stack Developer',
+        alt: "Leandro Trabucco · Full Stack Developer",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Leandro Trabucco | Full Stack Developer',
-    description: 'Full Stack Developer based in Tokyo. Building software that makes life easier.',
-    images: ['https://leandrotrabucco.me/images/og-image.png'],
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
-}
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Leandro Trabucco",
+  url: SITE_URL,
+  image: `${SITE_URL}/images/profile.jpeg`,
+  jobTitle: "Full Stack Developer",
+  email: `mailto:${EMAIL}`,
+  sameAs: [GITHUB_URL, LINKEDIN_URL],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: LOCATION.city,
+    addressRegion: LOCATION.region,
+    addressCountry: LOCATION.countryCode,
+  },
+  knowsLanguage: ["en", "es", "ja", "pt"],
+};
 
 export default function RootLayout({
   children,
@@ -57,6 +98,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <LanguageProvider>
           {children}
         </LanguageProvider>
