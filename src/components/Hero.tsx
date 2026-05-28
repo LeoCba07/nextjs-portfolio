@@ -5,25 +5,35 @@ import { useLanguage } from '@/context/LanguageContext'
 export default function Hero() {
   const { language, t } = useLanguage()
   const [roleText, setRoleText] = useState('')
+  const [locationText, setLocationText] = useState('')
 
   const fullRole = t('hero.roleValue') as string
+  const fullLocation = t('hero.locationValue') as string
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect */
     setRoleText('')
+    setLocationText('')
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [language])
 
+  const roleComplete = roleText.length === fullRole.length
+  const locationComplete = locationText.length === fullLocation.length
+
   useEffect(() => {
-    if (roleText.length < fullRole.length) {
+    if (!roleComplete) {
       const timeout = setTimeout(() => {
         setRoleText(fullRole.substring(0, roleText.length + 1))
       }, 45)
       return () => clearTimeout(timeout)
     }
-  }, [roleText, fullRole])
-
-  const typedComplete = roleText.length === fullRole.length
+    if (!locationComplete) {
+      const timeout = setTimeout(() => {
+        setLocationText(fullLocation.substring(0, locationText.length + 1))
+      }, 45)
+      return () => clearTimeout(timeout)
+    }
+  }, [roleText, locationText, fullRole, fullLocation, roleComplete, locationComplete])
 
   return (
     <section
@@ -57,15 +67,14 @@ export default function Hero() {
                 <span className="text-gray-600 select-none">&gt;</span>{' '}
                 <span className="text-gold">{t('hero.role') as string}:</span>{' '}
                 <span className="text-gray-300">{roleText}</span>
-                {!typedComplete && <span className="animate-blink text-gold">|</span>}
+                {!roleComplete && <span className="animate-blink text-gold">|</span>}
               </p>
-              {typedComplete && (
-                <p className="animate-fade-in-up">
-                  <span className="text-gray-600 select-none">&gt;</span>{' '}
-                  <span className="text-gold">{t('hero.location') as string}:</span>{' '}
-                  <span className="text-gray-300">{t('hero.locationValue') as string}</span>
-                </p>
-              )}
+              <p>
+                <span className="text-gray-600 select-none">&gt;</span>{' '}
+                <span className="text-gold">{t('hero.location') as string}:</span>{' '}
+                <span className="text-gray-300">{locationText}</span>
+                {roleComplete && !locationComplete && <span className="animate-blink text-gold">|</span>}
+              </p>
             </div>
 
             <p className="text-gray-500 text-sm mb-3">$ open</p>
