@@ -12,21 +12,24 @@
     "role": "rol",
     "roleValue": "Desarrollador Full Stack",
     "location": "ubicación",
-    "locationValue": "Argentina",
+    "locationValue": "Córdoba, Argentina",
     "seeProjects": "Ver Proyectos",
     "contact": "Contacto"
   },
   "about": {
     "badge": "Sobre mí",
     "title": "Desarrollador Full Stack",
-    "subtitle": "Basado en Argentina",
-    "bio": "Cuatro años en servicio al cliente me enseñaron a obsesionarme con la experiencia del usuario. Ahora construyo software que facilita la vida, tanto para los usuarios como para quienes lo desarrollan.",
+    "bio": [
+      "Valido ideas, diseño MVPs y construyo apps full-stack — desde el concepto hasta producción.",
+      "Cuatro años en hospitalidad antes de programar me enseñaron a obsesionarme con la experiencia del usuario y a entregar para personas reales.",
+      "Actualmente construyendo AgroSaaS — app de gestión agrícola para la industria agropecuaria argentina — junto a un desarrollador senior, con un productor local que impulsa las pruebas en el campo."
+    ],
     "cta": "Ver mi trabajo",
     "hobbies": ["levantar pesas", "videojuegos", "explorar cafés", "viajar"],
     "json": {
       "name": "Leandro Trabucco",
-      "location": "Argentina",
-      "status": "Disponible para Trabajar"
+      "location": "Córdoba, Argentina",
+      "status": "Abierto a roles junior full-stack / frontend"
     }
   },
   "education": {
@@ -64,7 +67,7 @@
       },
       {
         "title": "El Alto",
-        "description": "Sitio web para un complejo de cabañas en Tanti, Córdoba, Argentina. Construí un formulario de contacto estilo chatbot que recopila fechas y cantidad de huéspedes antes de abrir WhatsApp, resolviendo el problema de los mensajes vacíos de 'Hola'. Integré Sanity CMS para actualización de precios autoservicio y Google Analytics para seguimiento de conversiones."
+        "description": "Sitio web moderno de alquiler de cabañas con un formulario de contacto inteligente y chatbot para un negocio familiar de 30 años en Argentina. El formulario y el chatbot pre-cargan WhatsApp con fechas y cantidad de huéspedes — pensado para bajar una tasa de consultas incompletas del 80% y agilizar reservas directas."
       },
       {
         "title": "Nihongo Hero",

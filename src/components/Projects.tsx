@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { useLanguage } from '@/context/LanguageContext'
+import { projectImages } from '@/lib/projectImages'
 
 type Tech = { name: string; icon: string }
 
@@ -257,11 +258,7 @@ const projects: Project[] = [
     ],
     github: null,
     live: 'https://www.jidou-navi.app',
-    images: [
-      '/images/projects/jidou-navi-1.webp',
-      '/images/projects/jidou-navi-2.webp',
-      '/images/projects/jidou-navi-3.webp',
-    ],
+    images: [...projectImages['jidou-navi']],
     type: 'mobile',
   },
   {
@@ -275,32 +272,20 @@ const projects: Project[] = [
     ],
     github: 'https://github.com/LeoCba07/el-alto-website',
     live: 'https://www.complejoelalto.com.ar',
-    images: [
-      '/images/projects/el-alto-1.png',
-      '/images/projects/el-alto-2.png',
-      '/images/projects/el-alto-3.png',
-      '/images/projects/el-alto-4.png',
-      '/images/projects/el-alto-5.png',
-    ],
+    images: [...projectImages['el-alto']],
     type: 'desktop',
   },
   {
     title: 'Nihongo Hero',
     stack: [
-      { name: 'Rails', icon: '/icons/devicons/rails.svg' },
-      { name: 'JavaScript', icon: '/icons/devicons/javascript.svg' },
-      { name: 'SCSS', icon: '/icons/devicons/sass.svg' },
-      { name: 'Bootstrap', icon: '/icons/devicons/bootstrap.svg' },
+      { name: 'Rails 7', icon: '/icons/devicons/rails.svg' },
+      { name: 'Hotwire (Turbo + Stimulus)', icon: '/icons/brands/hotwire.svg' },
       { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
-      { name: 'Heroku', icon: '/icons/devicons/heroku.svg' },
+      { name: 'VoiceVox TTS API', icon: '/icons/brands/voicevox.svg' },
     ],
-    github: 'https://github.com/ShinOWfu/Nihongo-Hero',
+    github: 'https://github.com/LeoCba07/Nihongo-Hero',
     live: 'https://www.nihongohero.quest/',
-    images: [
-      '/images/projects/nihongo-hero-1.png',
-      '/images/projects/nihongo-hero-2.png',
-      '/images/projects/nihongo-hero-3.png',
-    ],
+    images: [...projectImages['nihongo-hero']],
     type: 'mobile',
   },
   {
@@ -312,13 +297,9 @@ const projects: Project[] = [
       { name: 'Bootstrap', icon: '/icons/devicons/bootstrap.svg' },
       { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
     ],
-    github: 'https://github.com/ShinOWfu/AdventureMaker',
-    live: null,
-    images: [
-      '/images/projects/adventure-maker-1.png',
-      '/images/projects/adventure-maker-2.png',
-      '/images/projects/adventure-maker-3.png',
-    ],
+    github: 'https://github.com/LeoCba07/AdventureMaker',
+    live: 'https://adventuremaker-shinowfu-91409f739c06.herokuapp.com/',
+    images: [...projectImages['adventure-maker']],
     type: 'desktop',
   },
 ]

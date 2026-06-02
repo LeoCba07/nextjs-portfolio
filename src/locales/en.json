@@ -12,21 +12,24 @@
     "role": "role",
     "roleValue": "Full Stack Developer",
     "location": "location",
-    "locationValue": "Argentina",
+    "locationValue": "Córdoba, Argentina",
     "seeProjects": "See Projects",
     "contact": "Contact"
   },
   "about": {
     "badge": "About Me",
     "title": "Full Stack Developer",
-    "subtitle": "Based in Argentina",
-    "bio": "Four years in hospitality taught me to obsess over user experience. Now I build software that makes life easier, for users and the people behind it.",
+    "bio": [
+      "I validate ideas, design MVPs, and build full-stack apps — from concept to production.",
+      "Four years in hospitality before code taught me to obsess over user experience and ship for real people.",
+      "Currently shipping AgroSaaS — a farm-management app for Argentina's agro industry — alongside a senior dev, with a local farmer driving real-world testing."
+    ],
     "cta": "See my work",
     "hobbies": ["lifting heavy weights", "gaming", "exploring cafés", "traveling"],
     "json": {
       "name": "Leandro Trabucco",
-      "location": "Argentina",
-      "status": "Available for Work"
+      "location": "Córdoba, Argentina",
+      "status": "Open to junior full-stack / frontend roles"
     }
   },
   "education": {
@@ -64,7 +67,7 @@
       },
       {
         "title": "El Alto",
-        "description": "Website for a cabin rental complex in Tanti, Córdoba, Argentina. Built a chatbot-style contact form that collects dates and guest count before opening WhatsApp, solving the problem of empty 'Hola' messages. Integrated Sanity CMS for self-service price updates and Google Analytics for conversion tracking."
+        "description": "Modern cabin rental website with a smart contact form and chatbot for a 30-year-old family business in Argentina. The contact form and chatbot pre-fill WhatsApp with dates and guest count — built to cut down an 80% incomplete-inquiry rate and streamline direct bookings."
       },
       {
         "title": "Nihongo Hero",

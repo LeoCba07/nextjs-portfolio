@@ -100,16 +100,15 @@ export default function About() {
               <span>✦</span> {t('about.badge') as string}
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8">
               {t('about.title') as string}
             </h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gold mb-8">
-              {t('about.subtitle') as string}
-            </h3>
 
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-10">
-              {t('about.bio') as string}
-            </p>
+            <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-10 space-y-3">
+              {(t('about.bio') as unknown as string[]).map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
+            </div>
 
             <div className="space-y-3 mb-10 overflow-hidden">
               <TechMarquee items={techStackTop} direction="right" />
