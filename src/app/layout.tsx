@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, LOCATION, SITE_URL } from "@/lib/constants";
@@ -106,6 +107,7 @@ export default function RootLayout({
           {children}
         </LanguageProvider>
       </body>
+      <GoogleAnalytics gaId="G-NE9NYJDJWZ" />
     </html>
   );
 }
