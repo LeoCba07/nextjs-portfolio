@@ -59,11 +59,12 @@
     "badge": "My Work",
     "title": "Projects",
     "code": "Code",
-    "liveDemo": "Live Demo",
+    "liveDemo": "Website",
+    "playStore": "Google Play",
     "items": [
       {
         "title": "Jidou Navi",
-        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Sole developer since early 2026 (started with a partner), owning frontend, backend, and mobile deployment. Currently in closed testing on Google Play Store."
+        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Sole developer since early 2026 (started with a partner), owning frontend, backend, and mobile deployment. Now live on the Google Play Store."
       },
       {
         "title": "El Alto",

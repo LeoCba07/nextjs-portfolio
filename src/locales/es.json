@@ -59,11 +59,12 @@
     "badge": "Mi Trabajo",
     "title": "Proyectos",
     "code": "Código",
-    "liveDemo": "Demo en Vivo",
+    "liveDemo": "Sitio Web",
+    "playStore": "Google Play",
     "items": [
       {
         "title": "Jidou Navi",
-        "description": "App móvil colaborativa para descubrir las máquinas expendedoras únicas de Japón, con mapa interactivo y check-ins gamificados. Desarrollador único desde principios de 2026 (comenzó con un socio), a cargo del frontend, backend y despliegue móvil. Actualmente en pruebas cerradas en Google Play Store."
+        "description": "App móvil colaborativa para descubrir las máquinas expendedoras únicas de Japón, con mapa interactivo y check-ins gamificados. Desarrollador único desde principios de 2026 (comenzó con un socio), a cargo del frontend, backend y despliegue móvil. Ya disponible en Google Play Store."
       },
       {
         "title": "El Alto",
