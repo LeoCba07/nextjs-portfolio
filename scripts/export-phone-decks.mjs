@@ -10,7 +10,7 @@ const TARGETS = [
   { slug: 'jidou-navi', route: 'phone-deck' },
   { slug: 'nihongo-hero', route: 'phone-deck' },
   { slug: 'el-alto', route: 'browser' },
-  { slug: 'adventure-maker', route: 'browser' },
+  { slug: 'calibrar', route: 'browser' },
 ]
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))

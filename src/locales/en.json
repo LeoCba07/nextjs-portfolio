@@ -64,19 +64,19 @@
     "items": [
       {
         "title": "Jidou Navi",
-        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Sole developer since early 2026 (started with a partner), owning frontend, backend, and mobile deployment. Now live on the Google Play Store."
+        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Built by a two-developer team, covering frontend, backend, and mobile deployment. Now live on the Google Play Store."
       },
       {
         "title": "El Alto",
         "description": "Modern cabin rental website with a smart contact form and chatbot for a 30-year-old family business in Argentina. The contact form and chatbot pre-fill WhatsApp with dates and guest count — built to cut down an 80% incomplete-inquiry rate and streamline direct bookings."
       },
       {
-        "title": "Nihongo Hero",
-        "description": "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA."
+        "title": "Calibr.ar",
+        "description": "Workshop management SaaS for Argentine auto shops — repair orders, quotes, inventory, vehicles and scheduling in one place, with custom roles and a full audit trail. Currently in private testing with a real workshop, shaping the product around their day-to-day feedback ahead of a wider launch."
       },
       {
-        "title": "Adventure Maker",
-        "description": "AI-powered interactive storytelling platform with branching narratives. Developed LLM prompt engineering for dynamic story generation, implemented Gemini API image generation, and built a psychological assessment analyzing user patterns."
+        "title": "Nihongo Hero",
+        "description": "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA."
       }
     ]
   },

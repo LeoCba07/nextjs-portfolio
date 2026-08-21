@@ -16,6 +16,8 @@ interface Project {
   playStore: string | null
   images: string[]
   type: 'mobile' | 'desktop'
+  /** Address shown in the mock browser chrome. Falls back to a slug of the title. */
+  domain?: string
 }
 
 function GooglePlayIcon({ className = '' }: { className?: string }) {
@@ -45,7 +47,7 @@ function PhoneFrame({ src, alt, className = '' }: { src: string; alt: string; cl
   )
 }
 
-function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
+function BrowserCarousel({ images, alt, domain }: { images: string[]; alt: string; domain?: string }) {
   const [current, setCurrent] = useState(0)
 
   const prev = () => setCurrent((current - 1 + images.length) % images.length)
@@ -61,7 +63,7 @@ function BrowserCarousel({ images, alt }: { images: string[]; alt: string }) {
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
           <div className="flex-1 bg-white/5 rounded text-xs text-gray-500 px-3 py-1 ml-2 truncate font-mono">
-            {alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
+            {domain ?? alt.toLowerCase().replace(/\s+/g, '-') + '.app'}
           </div>
         </div>
         <div className="relative border border-white/10 border-t-0 rounded-b-lg overflow-hidden shadow-2xl bg-panel aspect-video">
@@ -206,7 +208,7 @@ function ProjectCard({
             {project.type === 'mobile' ? (
               <PhoneDeck images={project.images} alt={translation.title} />
             ) : (
-              <BrowserCarousel images={project.images} alt={translation.title} />
+              <BrowserCarousel images={project.images} alt={translation.title} domain={project.domain} />
             )}
           </div>
         )}
@@ -299,6 +301,23 @@ const projects: Project[] = [
     playStore: null,
     images: [...projectImages['el-alto']],
     type: 'desktop',
+    domain: 'complejoelalto.com.ar',
+  },
+  {
+    title: 'Calibr.ar',
+    stack: [
+      { name: 'Next.js', icon: '/icons/devicons/nextjs.svg' },
+      { name: 'TypeScript', icon: '/icons/devicons/typescript.svg' },
+      { name: 'Tailwind CSS', icon: '/icons/devicons/tailwindcss.svg' },
+      { name: 'Supabase', icon: '/icons/devicons/supabase.svg' },
+      { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
+    ],
+    github: null,
+    live: 'https://calibrar.vercel.app',
+    playStore: null,
+    images: [...projectImages.calibrar],
+    type: 'desktop',
+    domain: 'calibrar.vercel.app',
   },
   {
     title: 'Nihongo Hero',
@@ -313,21 +332,6 @@ const projects: Project[] = [
     playStore: null,
     images: [...projectImages['nihongo-hero']],
     type: 'mobile',
-  },
-  {
-    title: 'Adventure Maker',
-    stack: [
-      { name: 'Rails', icon: '/icons/devicons/rails.svg' },
-      { name: 'Gemini API', icon: '/icons/devicons/google.svg' },
-      { name: 'SCSS', icon: '/icons/devicons/sass.svg' },
-      { name: 'Bootstrap', icon: '/icons/devicons/bootstrap.svg' },
-      { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
-    ],
-    github: 'https://github.com/LeoCba07/AdventureMaker',
-    live: 'https://adventuremaker-shinowfu-91409f739c06.herokuapp.com/',
-    playStore: null,
-    images: [...projectImages['adventure-maker']],
-    type: 'desktop',
   },
 ]
 

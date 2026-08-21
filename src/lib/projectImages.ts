@@ -16,13 +16,15 @@ export const projectImages = {
     '/images/projects/el-alto-4.png',
     '/images/projects/el-alto-5.png',
   ],
-  'adventure-maker': [
-    '/images/projects/adventure-maker-1.png',
-    '/images/projects/adventure-maker-2.png',
-    '/images/projects/adventure-maker-3.png',
+  calibrar: [
+    '/images/projects/calibrar-1.png',
+    '/images/projects/calibrar-2.png',
+    '/images/projects/calibrar-3.png',
+    '/images/projects/calibrar-4.png',
+    '/images/projects/calibrar-5.png',
   ],
 } as const
 
 export type ProjectSlug = keyof typeof projectImages
 export type PhoneDeckSlug = 'jidou-navi' | 'nihongo-hero'
-export type BrowserSlug = 'el-alto' | 'adventure-maker'
+export type BrowserSlug = 'el-alto' | 'calibrar'

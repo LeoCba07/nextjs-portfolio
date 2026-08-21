@@ -71,12 +71,12 @@
         "description": "Sitio web moderno de alquiler de cabañas con un formulario de contacto inteligente y chatbot para un negocio familiar de 30 años en Argentina. El formulario y el chatbot pre-cargan WhatsApp con fechas y cantidad de huéspedes — pensado para bajar una tasa de consultas incompletas del 80% y agilizar reservas directas."
       },
       {
-        "title": "Nihongo Hero",
-        "description": "Una app gamificada para aprender japonés con combate por turnos estilo RPG. Lideré el desarrollo de un equipo de 4 personas en 2 semanas, diseñando la arquitectura de base de datos, integrando la API de VoiceVox TTS, y siendo el mayor contribuidor. Desplegada como PWA mobile-first."
+        "title": "Calibr.ar",
+        "description": "SaaS de gestión para talleres mecánicos argentinos — órdenes de reparación, presupuestos, inventario, vehículos y agenda en un solo lugar, con roles a medida y auditoría completa. Hoy en prueba privada con un taller real, ajustando el producto con su feedback diario antes de abrirlo a más clientes."
       },
       {
-        "title": "Adventure Maker",
-        "description": "Plataforma de narrativa interactiva impulsada por IA con historias ramificadas. Desarrollé ingeniería de prompts LLM para generación dinámica de historias, implementé generación de imágenes con la API de Gemini, y construí una evaluación psicológica que analiza patrones del usuario."
+        "title": "Nihongo Hero",
+        "description": "Una app gamificada para aprender japonés con combate por turnos estilo RPG. Lideré el desarrollo de un equipo de 4 personas en 2 semanas, diseñando la arquitectura de base de datos, integrando la API de VoiceVox TTS, y siendo el mayor contribuidor. Desplegada como PWA mobile-first."
       }
     ]
   },
