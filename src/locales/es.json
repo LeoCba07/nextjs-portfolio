@@ -64,7 +64,7 @@
     "items": [
       {
         "title": "Jidou Navi",
-        "description": "App móvil colaborativa para descubrir las máquinas expendedoras únicas de Japón, con mapa interactivo y check-ins gamificados. Desarrollador único desde principios de 2026 (comenzó con un socio), a cargo del frontend, backend y despliegue móvil. Ya disponible en Google Play Store."
+        "description": "App móvil colaborativa para descubrir las máquinas expendedoras únicas de Japón, con mapa interactivo y check-ins gamificados con XP e insignias. Los check-ins se validan del lado del servidor con geofencing PostGIS limitado a 200 m, de modo que la ubicación no se puede falsear desde el cliente. Desarrollador único desde principios de 2026 (comenzó con un socio), a cargo del frontend, backend y despliegue móvil. Ya disponible en Google Play Store."
       },
       {
         "title": "El Alto",
@@ -72,7 +72,7 @@
       },
       {
         "title": "Calibr.ar",
-        "description": "SaaS de gestión para talleres mecánicos argentinos — órdenes de reparación, presupuestos, inventario, vehículos y agenda en un solo lugar, con roles a medida y auditoría completa. Hoy en prueba privada con un taller real, ajustando el producto con su feedback diario antes de abrirlo a más clientes."
+        "description": "SaaS de gestión para talleres mecánicos argentinos — órdenes de reparación, presupuestos, inventario, vehículos y agenda en un solo lugar, con roles a medida y auditoría completa. Ya funcionando con su primer taller, ajustando el producto con su feedback diario antes de abrirlo a más clientes."
       },
       {
         "title": "Nihongo Hero",
