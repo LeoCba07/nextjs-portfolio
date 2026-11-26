@@ -5,11 +5,10 @@ export const projectImages = {
     '/images/projects/jidou-navi-3.webp',
   ],
   'el-alto': [
-    '/images/projects/el-alto-1.png',
-    '/images/projects/el-alto-2.png',
-    '/images/projects/el-alto-3.png',
-    '/images/projects/el-alto-4.png',
-    '/images/projects/el-alto-5.png',
+    '/images/projects/el-alto-1.jpg',
+    '/images/projects/el-alto-2.jpg',
+    '/images/projects/el-alto-3.jpg',
+    '/images/projects/el-alto-4.jpg',
   ],
   calibrar: [
     '/images/projects/calibrar-1.webp',
