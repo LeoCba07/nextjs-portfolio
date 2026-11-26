@@ -10,7 +10,7 @@ A single-page bilingual (EN/ES) portfolio for Leandro Trabucco — a full-stack 
 
 ## Audience
 
-- **Engineering hiring managers and recruiters** evaluating for junior/mid full-stack and frontend roles, often remote. Read on desktop, skim hard, want stack legibility and shipped work within ~10 seconds.
+- **Engineering hiring managers and recruiters** evaluating for QA and full-stack roles, often remote. Read on desktop, skim hard, want stack legibility and shipped work within ~10 seconds.
 - **Freelance/small-business clients** (similar to the El Alto cabin rental client) looking for someone who can build and own a small site or app end-to-end. Often Spanish-speaking, often on mobile.
 - **Peers** linking to it from social or chat. Read fully out of curiosity. Hold the bar on craft.
 

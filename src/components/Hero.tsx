@@ -63,17 +63,21 @@ export default function Hero() {
             </h1>
 
             <div className="space-y-2 mb-10 text-sm sm:text-base">
+              {/* Full text lives in the HTML for crawlers, link previews and screen readers;
+                  the typed copy is visual only. */}
               <p>
                 <span className="text-gray-600 select-none">&gt;</span>{' '}
                 <span className="text-gold">{t('hero.role') as string}:</span>{' '}
-                <span className="text-gray-300">{roleText}</span>
-                {!roleComplete && <span className="animate-blink text-gold">|</span>}
+                <span className="sr-only">{fullRole}</span>
+                <span className="text-gray-300" aria-hidden="true">{roleText}</span>
+                {!roleComplete && <span className="animate-blink text-gold" aria-hidden="true">|</span>}
               </p>
               <p>
                 <span className="text-gray-600 select-none">&gt;</span>{' '}
                 <span className="text-gold">{t('hero.location') as string}:</span>{' '}
-                <span className="text-gray-300">{locationText}</span>
-                {roleComplete && !locationComplete && <span className="animate-blink text-gold">|</span>}
+                <span className="sr-only">{fullLocation}</span>
+                <span className="text-gray-300" aria-hidden="true">{locationText}</span>
+                {roleComplete && !locationComplete && <span className="animate-blink text-gold" aria-hidden="true">|</span>}
               </p>
             </div>
 

@@ -11,7 +11,8 @@ const FRAME_WIDTH = 1600
 
 const browserMeta: Record<BrowserSlug, { url: string; intrinsicWidth: number; intrinsicHeight: number }> = {
   'el-alto': { url: 'complejoelalto.com.ar', intrinsicWidth: 2522, intrinsicHeight: 1286 },
-  calibrar: { url: 'calibrar.vercel.app', intrinsicWidth: 2880, intrinsicHeight: 1620 },
+  calibrar: { url: 'calibrar.vercel.app', intrinsicWidth: 1600, intrinsicHeight: 900 },
+  agile: { url: 'agile-arg.vercel.app', intrinsicWidth: 1600, intrinsicHeight: 900 },
 }
 
 export default async function BrowserExportPage({

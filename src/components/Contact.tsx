@@ -9,7 +9,6 @@ import {
   LINKEDIN_URL,
   RESUME_PATH,
   CURRICULUM_PATH,
-  RIREKISHO_PATH,
 } from '@/lib/constants'
 
 export default function Contact() {
@@ -65,15 +64,6 @@ export default function Contact() {
             >
               {t('contact.curriculum') as string}
               <Image src="/icons/flags/ar.svg" alt="" width={20} height={14} className="rounded-sm" />
-            </a>
-
-            <a
-              href={RIREKISHO_PATH}
-              download
-              className="inline-flex items-center gap-3 border border-white/10 hover:border-gold/50 bg-white/5 text-gray-300 hover:text-white px-5 py-3 rounded-lg transition-all duration-300"
-            >
-              {t('contact.rirekisho') as string}
-              <Image src="/icons/flags/jp.svg" alt="" width={20} height={14} className="rounded-sm" />
             </a>
           </div>
 

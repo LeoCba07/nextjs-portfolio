@@ -7,22 +7,27 @@ import { useLanguage } from '@/context/LanguageContext'
 
 type Tech = { name: string; icon: string }
 
+// Each row is wider than the column, so a badge never shows up twice on screen at once.
 const techStackTop: Tech[] = [
-  { name: 'React', icon: '/icons/devicons/react.svg' },
+  { name: 'React / React Native', icon: '/icons/devicons/react.svg' },
   { name: 'TypeScript', icon: '/icons/devicons/typescript.svg' },
   { name: 'Next.js', icon: '/icons/devicons/nextjs.svg' },
-  { name: 'React Native', icon: '/icons/devicons/react.svg' },
   { name: 'Tailwind CSS', icon: '/icons/devicons/tailwindcss.svg' },
-  { name: 'Supabase', icon: '/icons/devicons/supabase.svg' },
+  { name: 'Expo', icon: '/icons/brands/expo.svg' },
+  { name: 'Electron', icon: '/icons/devicons/electron.svg' },
+  { name: 'JavaScript', icon: '/icons/devicons/javascript.svg' },
+  { name: 'Ruby on Rails', icon: '/icons/devicons/rails.svg' },
 ]
 
 const techStackBottom: Tech[] = [
-  { name: 'Ruby on Rails', icon: '/icons/devicons/rails.svg' },
-  { name: 'JavaScript', icon: '/icons/devicons/javascript.svg' },
+  { name: 'Supabase', icon: '/icons/devicons/supabase.svg' },
   { name: 'PostgreSQL', icon: '/icons/devicons/postgresql.svg' },
-  { name: 'SCSS', icon: '/icons/devicons/sass.svg' },
+  { name: 'SQLite', icon: '/icons/devicons/sqlite.svg' },
+  { name: 'Playwright', icon: '/icons/devicons/playwright.svg' },
+  { name: 'Postman', icon: '/icons/devicons/postman.svg' },
+  { name: 'Jira', icon: '/icons/devicons/jira.svg' },
   { name: 'Git', icon: '/icons/devicons/git.svg' },
-  { name: 'Expo', icon: '/icons/brands/expo.svg' },
+  { name: 'Sanity', icon: '/icons/devicons/sanity.svg' },
 ]
 
 function TechMarquee({ items, direction = 'left' }: { items: Tech[]; direction?: 'left' | 'right' }) {
@@ -65,23 +70,26 @@ export default function About() {
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [language])
 
+  // One timer per step, always cleared, so a language switch never leaves a stray timeout behind.
   useEffect(() => {
     const word = words[currentWord]
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setDisplayText(word.substring(0, displayText.length + 1))
-        if (displayText === word) {
-          setTimeout(() => setIsDeleting(true), 1500)
-        }
-      } else {
-        setDisplayText(word.substring(0, displayText.length - 1))
-        if (displayText === '') {
-          setIsDeleting(false)
-          setCurrentWord((prev) => (prev + 1) % words.length)
-        }
-      }
-    }, isDeleting ? 50 : 100)
+    let delay = isDeleting ? 50 : 100
+    let step: () => void
 
+    if (!isDeleting && displayText === word) {
+      delay = 1500
+      step = () => setIsDeleting(true)
+    } else if (isDeleting && displayText === '') {
+      step = () => {
+        setIsDeleting(false)
+        setCurrentWord((prev) => (prev + 1) % words.length)
+      }
+    } else {
+      step = () =>
+        setDisplayText(word.substring(0, displayText.length + (isDeleting ? -1 : 1)))
+    }
+
+    const timeout = setTimeout(step, delay)
     return () => clearTimeout(timeout)
   }, [displayText, isDeleting, currentWord, words])
 
@@ -162,9 +170,9 @@ export default function About() {
                   <span className="text-gray-500">,</span>
                 </div>
                 <div className="pl-4">
-                  <span className="text-gold">&quot;status&quot;</span>
+                  <span className="text-gold">&quot;now&quot;</span>
                   <span className="text-gray-500">: </span>
-                  <span className="text-emerald-400">&quot;{(t('about.json') as Record<string, string>).status}&quot;</span>
+                  <span className="text-emerald-400">&quot;{(t('about.json') as Record<string, string>).now}&quot;</span>
                   <span className="text-gray-500">,</span>
                 </div>
                 <div className="pl-4">
@@ -182,7 +190,8 @@ export default function About() {
                 <div className="pl-4">
                   <span className="text-gold">&quot;hobby&quot;</span>
                   <span className="text-gray-500">: </span>
-                  <span className="text-emerald-400">
+                  <span className="sr-only">{words.join(', ')}</span>
+                  <span className="text-emerald-400" aria-hidden="true">
                     &quot;{displayText}
                     <span className="animate-blink text-gold">|</span>&quot;
                   </span>

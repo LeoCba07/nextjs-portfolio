@@ -15,16 +15,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "Leandro Trabucco | Full Stack Developer";
-const description = `Full Stack Developer based in ${LOCATION.country}. Building software that makes life easier with React, Next.js, TypeScript, and Ruby on Rails.`;
+const title = "Leandro Trabucco | QA Specialist & Full Stack Developer";
+const description = `QA Specialist and co-founder of JLRT Software, based in ${LOCATION.country}. I test software and build full-stack apps with React, Next.js, React Native, TypeScript and Supabase.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description,
   keywords: [
+    "QA Specialist",
     "Full Stack Developer",
-    "Web Developer",
+    "JLRT Software",
+    "Playwright",
     "Argentina",
     "React",
     "Next.js",
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Leandro Trabucco · Full Stack Developer",
+        alt: "Leandro Trabucco · QA Specialist · Co-founder at JLRT Software",
       },
     ],
   },
@@ -77,7 +79,11 @@ const personJsonLd = {
   name: "Leandro Trabucco",
   url: SITE_URL,
   image: `${SITE_URL}/images/profile.jpeg`,
-  jobTitle: "Full Stack Developer",
+  jobTitle: "QA Specialist",
+  worksFor: [
+    { "@type": "Organization", name: "Communities.Tech" },
+    { "@type": "Organization", name: "JLRT Software", url: "https://jlrt-software.com.ar" },
+  ],
   email: `mailto:${EMAIL}`,
   sameAs: [GITHUB_URL, LINKEDIN_URL],
   address: {
