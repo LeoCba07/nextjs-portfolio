@@ -17,7 +17,7 @@ Terminal-inspired developer portfolio showcasing my projects and journey as a de
 - **Terminal-style UI** with typewriter effects
 - **Fully responsive** — mobile to desktop
 - **Project showcase** with live demos
-- **Bilingual resume downloads** (EN/JP)
+- **Bilingual resume downloads** (EN/ES)
 
 ## Tech Stack
 

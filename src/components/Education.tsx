@@ -27,6 +27,7 @@ function renderSummary(text: string) {
       <a
         key={match.index}
         href={match[2]}
+        {...(match[2].startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         className="text-gold hover:underline underline-offset-2 decoration-gold/50"
       >
         {match[1]}

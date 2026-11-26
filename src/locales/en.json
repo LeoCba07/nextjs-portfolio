@@ -10,7 +10,7 @@
     "whoami": "$ whoami",
     "name": "Leandro Trabucco",
     "role": "role",
-    "roleValue": "Full Stack Developer",
+    "roleValue": "QA Specialist · Co-founder at JLRT Software",
     "location": "location",
     "locationValue": "Córdoba, Argentina",
     "seeProjects": "See Projects",
@@ -18,18 +18,23 @@
   },
   "about": {
     "badge": "About Me",
-    "title": "Full Stack Developer",
+    "title": "Full Stack Developer & QA",
     "bio": [
-      "I validate ideas, design MVPs, and build full-stack apps — from concept to production.",
-      "Four years in hospitality before code taught me to obsess over user experience and ship for real people.",
-      "Currently shipping a farm-management app for Argentina's agro industry — alongside a senior dev, with a local farmer driving real-world testing."
+      "I test software, design MVPs, and build full-stack apps, from concept to production.",
+      "I co-founded JLRT Software, a small software company in Córdoba, where we build the systems our clients run their businesses on. By day I'm the QA Specialist for a US payroll and staffing platform.",
+      "Years in hospitality in Japan taught me to obsess over user experience and ship for real people."
     ],
     "cta": "See my work",
-    "hobbies": ["lifting heavy weights", "gaming", "exploring cafés", "traveling"],
+    "hobbies": [
+      "lifting heavy weights",
+      "gaming",
+      "exploring cafés",
+      "traveling"
+    ],
     "json": {
       "name": "Leandro Trabucco",
       "location": "Córdoba, Argentina",
-      "status": "Open to junior full-stack / frontend roles"
+      "now": "QA @ Communities.Tech · JLRT Software"
     }
   },
   "education": {
@@ -39,11 +44,11 @@
       {
         "logo": "/images/logo-utn-small.jpg",
         "logoTheme": "light",
-        "degree": "Associate's Degree in Computer Programming",
+        "degree": "University Technical Degree in Programming",
         "school": "Universidad Tecnológica Nacional",
         "place": "Argentina",
         "period": "May 2026 - Current",
-        "summary": "Two-year degree pursued alongside freelance and personal projects. Covers software architecture, data structures, databases, object-oriented programming, algorithms, and modern web development. Adds academic grounding to the work I've been shipping in production, and opens the door to more rigorous backend and systems territory."
+        "summary": "Two-year program (1,375 hours) taken alongside my work: Programming I–IV, Databases I–II, Systems Architecture & Operating Systems, Software Development Management and Statistics. Adds academic grounding to what I already build and test in production."
       },
       {
         "logo": "/images/logo-lewagon.svg",
@@ -51,7 +56,7 @@
         "school": "Le Wagon Tokyo",
         "place": "Japan",
         "period": "Oct 2025 - Dec 2025",
-        "summary": "Intensive 9-week full-stack program in Tokyo, covering Ruby on Rails, JavaScript, relational databases, REST APIs, and LLM integration. Pair programming, code reviews, and project-based learning from day one. The final two weeks were a team-built capstone ([Nihongo Hero](#projects)) where I led the four-person dev team and shipped a deployed mobile-first PWA."
+        "summary": "Intensive 9-week full-stack program in Tokyo, covering Ruby on Rails, JavaScript, relational databases, REST APIs, and LLM integration. Pair programming, code reviews, and project-based learning from day one. The final two weeks were a team-built capstone, [Nihongo Hero](https://github.com/LeoCba07/Nihongo-Hero), a mobile-first web app where I was the largest contributor on a four-person team."
       }
     ]
   },
@@ -64,19 +69,19 @@
     "items": [
       {
         "title": "Jidou Navi",
-        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins with XP and badges. Check-ins are verified server-side with a 200m PostGIS geofence, so location can't be spoofed from the client. Sole developer since early 2026 (started with a partner), covering frontend, backend, and mobile deployment. Now live on the Google Play Store."
+        "description": "Crowdsourced mobile app for discovering Japan's unique vending machines, with an interactive map and gamified check-ins. Lead developer: built most of the app, with early help from a development partner. Now live on the Google Play Store."
       },
       {
         "title": "El Alto",
-        "description": "Modern cabin rental website with a smart contact form and chatbot for a 30-year-old family business in Argentina. The contact form and chatbot pre-fill WhatsApp with dates and guest count — built to cut down an 80% incomplete-inquiry rate and streamline direct bookings."
+        "description": "Cabin rental website for a 30-year-old family business in Argentina. Its contact form and chatbot pre-fill WhatsApp with dates and guest count, since the owners estimated about 80% of inquiries arrived without them."
       },
       {
         "title": "Calibr.ar",
-        "description": "Workshop management SaaS for Argentine auto shops — repair orders, quotes, inventory, vehicles and scheduling in one place, with custom roles and a full audit trail. Now live with its first workshop, shaping the product around their day-to-day feedback ahead of a wider launch."
+        "description": "Workshop management SaaS for Argentine auto repair shops: repair orders, quotes, inventory, vehicles and scheduling in one place. Built at JLRT Software, where I designed the interface and design system and built many of its screens. Live in production."
       },
       {
-        "title": "Nihongo Hero",
-        "description": "A gamified Japanese language learning app with RPG-style turn-based combat. Led 4-person team development in 2 weeks, designing database architecture, integrating VoiceVox TTS API, and serving as top contributor. Deployed as mobile-first PWA."
+        "title": "Agile",
+        "description": "Point-of-sale system for Argentine kiosks that keeps selling when the internet drops, with two tills, wholesale orders and the shop's numbers on the owner's phone. Built at JLRT Software: I built much of the admin app and the till, and ran the scenario-based test sessions before releases."
       }
     ]
   },
@@ -86,8 +91,7 @@
     "subtitle": "Together",
     "cta": "Get In Touch",
     "resume": "Resume (EN)",
-    "curriculum": "Currículum (ES)",
-    "rirekisho": "履歴書 (JP)"
+    "curriculum": "Currículum (ES)"
   },
   "footer": {
     "copyright": "© 2026 Leandro Trabucco"
